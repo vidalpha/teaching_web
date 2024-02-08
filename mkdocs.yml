@@ -1,0 +1,158 @@
+site_name: TP et Ressources web utiles
+site_url: https://vidalpha.github.io/web
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    #- navigation.sections
+    #- navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - toc.follow
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+    # - navigation.footer
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline 
+        name: Switch to dark mode
+      primary: green
+      accent: pink
+    - scheme: slate 
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode    
+      primary: green
+      accent: lime
+
+#plugins:
+#  - social
+
+#extra:
+#  social:
+#    - icon: fontawesome/brands/github-alt
+#      link: https://github.com/VincentEnglebert
+#    - icon: fontawesome/brands/twitter
+#      link: https://twitter_page_link
+#    - icon: fontawesome/brands/linkedin
+#      link: https://www.linkedin.com/in/vincentenglebert
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      title: Table des matières
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Home: 'index.md'
+  - INFOB318:
+    - Overview: infob318/index.md
+  - IALTEM:
+    - POO avancée: ialtem/poo.md
+    - SOLID principles: ialtem/solid.md
+    - Design Patterns: ialtem/patterns.md
+    - Couplage: ialtem/couplage.md
+    - Threads: ialtem/threads.md
+    - Architectural patterns and styles: ialtem/styles.md
+    - Non Fonctional Properties: ialtem/scenario.md
+    - TP:
+      - Threads: 
+        - Overview: fiches/thread/index.md
+        - QCM et exercices: fiches/thread/qcm_exercices.md
+        - Philosophes: fiches/thread/philosophes.md
+        - Lecteurs/Rédacteurs: fiches/thread/lecteurs_redacteurs.md
+        - Producteurs/Consommateurs: fiches/thread/producteurs_consommateurs.md
+        - Tower bridge: fiches/thread/tower_bridge.md
+        - Workflow: fiches/thread/workflow.md
+        - Petri Net: fiches/thread/petri.md
+
+  - LABIL: 
+    - Overview: labil/index.md
+  - MDE: mde/index.md
+  - BAGI: bagi/index.md
+
+  - Frameworks et technologies:
+    - Overview: frameworks/index.md
+    - AOP & AspectJ: frameworks/aop/index.md
+    - Docker: 
+      - Overview: frameworks/docker/index.md
+      - TP:
+        - Prérequis: fiches/docker/index.md
+        - Prise en main de docker 😎: fiches/docker/commands.md
+    - Frameworks Javascript: frameworks/javascript/index.md
+    - Frameworks python: frameworks/python/index.md
+    - Git : 
+      - Overview: frameworks/git/index.md
+      - TP:
+        - Prérequis: fiches/git/index.md
+        - Prise en main de git 😎 : fiches/git/commands.md
+        - Git Actions: fiches/git/git_actions.md
+        - CI/CD: fiches/git/cicd.md
+        - Chasse aux bugs: fiches/git/bugs.md
+        - Git Hooks: fiches/git/hooks.md
+    - IDE:
+      - Intellij IDEA: frameworks/ide/intellij.md
+      - Eclipse: frameworks/ide/eclipse.md
+    - JavaFX: frameworks/javafx/index.md
+    - OSGi: frameworks/osgi/index.md
+    - SCRUM: frameworks/scrum/index.md
+    - Spring:
+      - Introduction: frameworks/spring/index.md
+      - Concepts: frameworks/spring/concepts.md
+      - Spring boot: frameworks/spring/spring_boot.md
+      - Structure d'un projet: frameworks/spring/structure.md
+      - Dev Tools: frameworks/spring/dev_tools.md
+      - Configuration des DB : frameworks/spring/db_confs.md
+      - Couche de persistance : frameworks/spring/persistence.md
+      - Spring AOP: frameworks/spring/spring_aop.md
+      - Securité : frameworks/spring/securite.md
+      - Audit and Logs : frameworks/spring/audit_logs.md
+      - Junit: frameworks/spring/junit.md
+      - JMS ActiveMQ: frameworks/spring/jms_activemq.md
+      - Servers and build tools: frameworks/spring/serveurs_tools.md
+
+    
+
+copyright: |
+  &copy; 2024 <a href="#"  rel="noopener">Université de Namur, Belgique</a>
