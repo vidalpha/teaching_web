@@ -47,7 +47,7 @@ L'injection de dépendance peut être fait en utilisant une classe concrète ou 
 
 ### Beans
 
-#### Java Bean vs POJO vs Spring Bean
+#### Java Bean vs POJO (Plain Old Java Object) vs Spring Bean
 
 - :fontawesome-brands-youtube:{ .youtube } [Voir la différence entre ces notions...](https://www.youtube.com/watch?v=lQ3svlKjs70&t=5m5s){:target="_blank"}
 

@@ -3,7 +3,7 @@
 
 Cependant ce TP n'aborde pas toutes les notions et nuances de l'utilisation de git.
 
-**Durée**: Il se déroulera en une séance de 2 à 3h. Certains aspects clés seront abordés. Les autres concepts seront couverts par des ressources en ligne sélectionnées que nous vous présentons [ici](../../frameworks/git/index.md#autres-ressources).
+**Durée**: Il se déroulera en une séance de 2h. Certains aspects clés seront abordés. Les autres concepts seront couverts par des ressources en ligne sélectionnées que nous vous présentons [ici](../../frameworks/git/index.md#autres-ressources).
 
 **Prérequis**:
 

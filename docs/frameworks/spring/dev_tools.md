@@ -12,7 +12,7 @@
 </dependencies>
 ```
 
-- Par défaut il n'est désactivé lors du build.
+- Par défaut elle est désactivée lors du build.
 
 ## Quelques fonctionnalités:
 

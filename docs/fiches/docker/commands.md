@@ -8,12 +8,13 @@ A la fin de cette section, tu seras capable de déployer un site wordpress basé
 
 [Installation](#installation) <br>
 [Docker Desktop](#docker-desktop) <br>
-[I- Récupérer une image]() <br>
-[II- Manipuler un conteneur]() <br>
-[III- Dockerfile]() <br>
-[IV- Les volumes]() <br>
-[V- Docker Compose]() <br>
-[VI- Nettoyage du système]() <br>
+[I- Récupérer une image](#i-recuperer-une-image) <br>
+[II- Manipuler des conteneurs](#ii-manipuler-des-conteneurs) <br>
+[III- Automatiser les services](#iii-automatiser-les-services) <br>
+[IV- Persister les données](#iv-persister-les-donnees) <br>
+[V- Contruire une image](#v-construire-une-image) <br>
+[VI- Publier une image sur le Hub](#vi-publier-une-image-sur-le-hub) <br>
+[VII- Nettoyer les ressources orphelines](#vii-nettoyer-les-ressources-orphelines) <br>
 
 ## Installation
 
@@ -69,7 +70,7 @@ Dans cette section, nous allons récupérer une image de wordpress sur docker-hu
 
 Dans la section suivante nous allons lancer un conteneur basé sur `wordpress`
 
-## II- Manipuler les conteneurs
+## II- Manipuler des conteneurs
 
 ### Format des commandes de docker
 
@@ -468,18 +469,14 @@ Voici le contenu du `Dockerfile`. Il doit se trouver au même niveau que le `doc
 FROM wordpress:6.4.3-php8.1-apache
 
 # Installer Vim
-RUN apt-get update && apt-get install -y vim
-
-# Copier le fichier phpinfo.php local vers le conteneur
-COPY phpinfo.php /var/www/html/
-
+RUN apt-get update && apt-get install -y vim ascii
 ```
 
-Télécharger le fichier [`phpinfo.php`](../../ressources/phpinfo.php){:target="_blank"}. Déposez le à la racine du projet.
+Créer un dossier `www` à la racine du projet. Nous allons synchronisé ce dossier avec le dossier `/var/www/html` présent dans le conteneur.
 
 Aménagement du `docker-compose` pour prendre en compte le `Dockerfile`.
 
-```yml linenums="1" hl_lines="9-10"
+```yml linenums="1" hl_lines="9-10 20"
 version: '3.3'
 
 services:
@@ -499,7 +496,7 @@ services:
       WORDPRESS_DB_PASSWORD: admin
       WORDPRESS_DB_NAME: mysite
     volumes:
-      - wp_data:/var/www/html
+      - ./www:/var/www/html
     depends_on:
       - db
     networks:
@@ -526,7 +523,7 @@ volumes:
 
 !!! question "Questions"
 
-    1. la ligne `9` n'est pas nécessaire. Pourquoi ?
+    1. La ligne `9` n'est pas nécessaire. Pourquoi ?
 
 
 Vous pouvez construire votre image Docker en exécutant la commande suivante dans le répertoire :
@@ -551,11 +548,10 @@ docker compose -p mysite up -d
 ![Docker custom image](../../img/docker/docker_custom_image.png)
 
 
-[Aller plus loin avec Dockerfile](https://docs.docker.com/engine/reference/builder/){:target="_blank"}
-
-
 Accédez aux informations du serveur web avec [`http://localhost:8080/phpinfo.php`](http://localhost:8080/phpinfo.php){:target="_blank"}
 
+
+[Aller plus loin avec Dockerfile](https://docs.docker.com/engine/reference/builder/){:target="_blank"}
 
 ## VI- Publier une image sur le hub
 

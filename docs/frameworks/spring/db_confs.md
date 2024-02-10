@@ -6,7 +6,7 @@ H2 est une base de données embarquée, ce qui signifie qu'elle peut être inté
 
 **Les étapes de configurations:**
 
-1. Ajouter la dépendance au fichier *pom.xml*
+1) Ajouter la dépendance au fichier *pom.xml*
 ``` xml
 <dependencies>
     <dependency>
@@ -16,16 +16,26 @@ H2 est une base de données embarquée, ce qui signifie qu'elle peut être inté
     </dependency>
 </dependencies>
 ```
-2. Ajouter cette configuration dans *application.properties*
+2) Ajouter cette configuration dans *application.properties*
 
+``` linenums="1"
+spring.h2.console.enabled=true
+spring.datasource.url=jdbc:h2:mem:testdb
+```
+<!--
 ![Configuration de H2](../../img/h2_properties.png)
+-->
 
-3. Accédez à la base au niveau de l'interface
+3) Accédez à la base au niveau de l'interface [`http://localhost:8080/h2-console`](http://localhost:8080/h2-console){:target="_blank"}
 
 ![Console H2](../../img/h2_console.png)
 
 
-## MariaDB
+## MariaDB/MySQL
+
+https://www.youtube.com/watch?v=Zzjn_Jz-A2E
+
+https://www.youtube.com/watch?v=k6Nmt-l1Bzc
 
 ## MongoDB
 
