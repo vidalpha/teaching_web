@@ -1,5 +1,5 @@
 site_name: TP et Ressources web utiles
-site_url: https://vidalpha.github.io/web
+site_url: https://VincentEnglebert.github.io/web
 theme:
   name: material
   features:
@@ -126,7 +126,7 @@ nav:
       - Overview: frameworks/git/index.md
       - TP:
         - Prérequis: fiches/git/index.md
-        - Prise en main de git 😎 : fiches/git/commands.md
+        - Prise en main de git 😎: fiches/git/commands.md
         - Git Actions: fiches/git/git_actions.md
         - CI/CD: fiches/git/cicd.md
         - Chasse aux bugs: fiches/git/bugs.md
@@ -144,13 +144,20 @@ nav:
       - Structure d'un projet: frameworks/spring/structure.md
       - Dev Tools: frameworks/spring/dev_tools.md
       - Configuration des DB : frameworks/spring/db_confs.md
-      - Couche de persistance : frameworks/spring/persistence.md
+      - Couche de persistence : frameworks/spring/persistence.md
       - Spring AOP: frameworks/spring/spring_aop.md
       - Securité : frameworks/spring/securite.md
       - Audit and Logs : frameworks/spring/audit_logs.md
       - Junit: frameworks/spring/junit.md
       - JMS ActiveMQ: frameworks/spring/jms_activemq.md
       - Servers and build tools: frameworks/spring/serveurs_tools.md
+      - TPs:
+        - Overview: fiches/spring/index.md
+        - Injection de dépendance 😎: fiches/spring/injection.md
+        - Spring configuration: fiches/spring/spring_config.md
+        - REST Bootstrap: fiches/spring/rest_bootstrap.md
+        - Frontend framework: fiches/spring/frontend.md
+        
 
     
 
