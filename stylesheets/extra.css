@@ -1,0 +1,15 @@
+.md-content {
+    /** text-align: justify;**/
+}
+
+.span-hightlight{
+    background-color:#666a6d; 
+    color:white; 
+    padding:2px;  
+    border-radius: 5px;
+    font-size: small;
+}
+
+.youtube {
+    color: #EE0F0F;
+}
