@@ -1,0 +1,4429 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://VincentEnglebert.github.io/web/fiches/git/commands/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../git_actions/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.19">
+    
+    
+      
+        <title>Prise en main de git 😎 - TP et Ressources web utiles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tp1-git" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="TP et Ressources web utiles" class="md-header__button md-logo" aria-label="TP et Ressources web utiles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TP et Ressources web utiles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Prise en main de git 😎
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../infob318/" class="md-tabs__link">
+          
+  
+    
+  
+  INFOB318
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ialtem/poo/" class="md-tabs__link">
+          
+  
+    
+  
+  IALTEM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../labil/" class="md-tabs__link">
+          
+  
+    
+  
+  LABIL
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../mde/" class="md-tabs__link">
+          
+  
+    
+  
+  MDE
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../bagi/" class="md-tabs__link">
+        
+  
+    
+  
+  BAGI
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../frameworks/" class="md-tabs__link">
+          
+  
+    
+  
+  Frameworks et technologies
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="TP et Ressources web utiles" class="md-nav__button md-logo" aria-label="TP et Ressources web utiles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    TP et Ressources web utiles
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../infob318/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    INFOB318
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            INFOB318
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    IALTEM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            IALTEM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ialtem/poo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    POO avancée
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ialtem/solid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SOLID principles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ialtem/patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ialtem/couplage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Couplage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ialtem/threads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Threads
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ialtem/styles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architectural patterns and styles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ialtem/scenario/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Non Fonctional Properties
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            TP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../thread/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Threads
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8_1" id="__nav_3_8_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            Threads
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thread/qcm_exercices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QCM et exercices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thread/philosophes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Philosophes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thread/lecteurs_redacteurs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecteurs/Rédacteurs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thread/producteurs_consommateurs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Producteurs/Consommateurs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thread/tower_bridge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tower bridge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thread/workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thread/petri/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Petri Net
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../labil/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    LABIL
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            LABIL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../mde/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    MDE
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            MDE
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BAGI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../frameworks/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Frameworks et technologies
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Frameworks et technologies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../frameworks/aop/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    AOP & AspectJ
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            AOP & AspectJ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../aop/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    TP
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_2_2" id="__nav_7_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            TP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aop/tp_transaction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des transactions 😎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../frameworks/docker/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Docker
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Docker
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../docker/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    TP
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_3_2" id="__nav_7_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            TP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prise en main de docker 😎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/javascript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frameworks Javascript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frameworks python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../frameworks/git/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    TPs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_6_2" id="__nav_7_6_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_6_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            TPs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Prise en main de git 😎
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Prise en main de git 😎
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-init-dun-depot-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      I- Init d'un dépôt local
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I- Init d'un dépôt local">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ajout-de-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ajout de fichiers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ajout de fichiers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-peu-de-markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      Un peu de markdown
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etat-du-depot-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      Etat du dépôt local
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premier-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Premier commit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-zones-et-cycles-de-vie-des-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      II- Zones et cycles de vie des fichiers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-init-depot-distant" class="md-nav__link">
+    <span class="md-ellipsis">
+      III- Init Dépôt distant
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="III- Init Dépôt distant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#premier-commit_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Premier commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modification-sur-le-remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modification sur le remote
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-synchronisation-avec-le-depot-distant" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV- Synchronisation avec le dépôt distant
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IV- Synchronisation avec le dépôt distant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lier-les-depots-local-et-remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lier les dépôts local et remote
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lier-les-branches-locale-et-distante" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lier les branches: locale et distante
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lier les branches: locale et distante">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#push-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Push command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renommer-une-branche" class="md-nav__link">
+    <span class="md-ellipsis">
+      Renommer une branche
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pull command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-rebase-squash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge - rebase - squash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-des-conflits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestion des conflits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gestion des conflits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure-dun-conflit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure d'un conflit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolve-in-merge-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resolve in merge editor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finalisation-du-rebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finalisation du rebase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envoi-des-modifications-sur-le-depot-distant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Envoi des modifications sur le dépôt distant
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resume-des-commandes-de-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      Résumé des commandes de base
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Résumé des commandes de base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloner-un-depot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloner un dépôt
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-gitignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      V- Gitignore
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-developpements-paralleles" class="md-nav__link">
+    <span class="md-ellipsis">
+      VI- Développements parallèles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VI- Développements parallèles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basculer-vers-une-nouvelle-branche" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basculer vers une nouvelle branche
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-du-dernier-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message du dernier commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-de-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge de branches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les tags
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vii-faire-du-nettoyage" class="md-nav__link">
+    <span class="md-ellipsis">
+      VII- Faire du nettoyage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VII- Faire du nettoyage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-prune" class="md-nav__link">
+    <span class="md-ellipsis">
+      git prune
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-garbage-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git garbage collection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viii-collaboration" class="md-nav__link">
+    <span class="md-ellipsis">
+      VIII- Collaboration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VIII- Collaboration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fork
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fork">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avant-un-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avant un fork
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apres-un-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      Après un fork
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-request-pr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pull Request (PR)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git_actions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Actions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cicd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bugs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chasse aux bugs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Hooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../frameworks/groovy/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Groovy
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7">
+            <span class="md-nav__icon md-icon"></span>
+            Groovy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    IDE
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_8">
+            <span class="md-nav__icon md-icon"></span>
+            IDE
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/ide/intellij/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intellij IDEA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/ide/eclipse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eclipse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/javafx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JavaFX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/osgi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSGi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/scrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCRUM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_12" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../frameworks/spring/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Spring
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_12" id="__nav_7_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_12">
+            <span class="md-nav__icon md-icon"></span>
+            Spring
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concepts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/spring_boot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring boot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Structure d'un projet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/dev_tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dev Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/db_confs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration des DB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/persistence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Couche de persistence
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/spring_aop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring AOP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/securite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Securité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/audit_logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audit and Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/junit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Junit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/jms_activemq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JMS ActiveMQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/serveurs_tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Servers and build tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_12_14" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../spring/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    TPs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_12_14" id="__nav_7_12_14_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_12_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_12_14">
+            <span class="md-nav__icon md-icon"></span>
+            TPs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring/injection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Injection de dépendance 😎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring/spring_config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring/rest_bootstrap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    REST Bootstrap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring/frontend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frontend framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-init-dun-depot-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      I- Init d'un dépôt local
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I- Init d'un dépôt local">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ajout-de-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ajout de fichiers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ajout de fichiers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-peu-de-markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      Un peu de markdown
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etat-du-depot-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      Etat du dépôt local
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#premier-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Premier commit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-zones-et-cycles-de-vie-des-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      II- Zones et cycles de vie des fichiers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-init-depot-distant" class="md-nav__link">
+    <span class="md-ellipsis">
+      III- Init Dépôt distant
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="III- Init Dépôt distant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#premier-commit_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Premier commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modification-sur-le-remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modification sur le remote
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-synchronisation-avec-le-depot-distant" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV- Synchronisation avec le dépôt distant
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IV- Synchronisation avec le dépôt distant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lier-les-depots-local-et-remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lier les dépôts local et remote
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lier-les-branches-locale-et-distante" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lier les branches: locale et distante
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lier les branches: locale et distante">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#push-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Push command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renommer-une-branche" class="md-nav__link">
+    <span class="md-ellipsis">
+      Renommer une branche
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pull command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-rebase-squash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge - rebase - squash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-des-conflits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestion des conflits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gestion des conflits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure-dun-conflit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure d'un conflit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolve-in-merge-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resolve in merge editor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finalisation-du-rebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finalisation du rebase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envoi-des-modifications-sur-le-depot-distant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Envoi des modifications sur le dépôt distant
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resume-des-commandes-de-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      Résumé des commandes de base
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Résumé des commandes de base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloner-un-depot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloner un dépôt
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-gitignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      V- Gitignore
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-developpements-paralleles" class="md-nav__link">
+    <span class="md-ellipsis">
+      VI- Développements parallèles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VI- Développements parallèles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basculer-vers-une-nouvelle-branche" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basculer vers une nouvelle branche
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-du-dernier-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message du dernier commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-de-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge de branches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les tags
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vii-faire-du-nettoyage" class="md-nav__link">
+    <span class="md-ellipsis">
+      VII- Faire du nettoyage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VII- Faire du nettoyage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-prune" class="md-nav__link">
+    <span class="md-ellipsis">
+      git prune
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-garbage-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git garbage collection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viii-collaboration" class="md-nav__link">
+    <span class="md-ellipsis">
+      VIII- Collaboration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VIII- Collaboration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fork
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fork">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avant-un-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avant un fork
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apres-un-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      Après un fork
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-request-pr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pull Request (PR)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="tp1-git">TP1 GIT<a class="headerlink" href="#tp1-git" title="Permanent link">&para;</a></h1>
+<p><strong>Objectif</strong> </p>
+<p>A la fin de cette section, tu seras capable de résoudre la plupart des situations d'utilisation de git en entreprise.</p>
+<p><strong>Contenu</strong></p>
+<p><a href="#i-init-dun-depot-local">I- Initialisation d'un dépôt local</a> <br>
+<a href="#ii-zones-et-cycles-de-vie-des-fichiers">II- Zones et cycles de vie des fichiers</a> <br>
+<a href="#iii-init-depot-distant">III- Initialisation Dépôt distant</a> <br>
+<a href="#iv-synchronisation-avec-le-depot-distant">IV- Synchronisation du dépôt local avec le dépôt distant</a> <br>
+<a href="#v-gitignore">V- Fichiers ignorés par git</a> <br>
+<a href="#vi-developpements-paralleles">VI- Développements parallèles</a> <br>
+<a href="#vii-faire-du-nettoyage">VII- Nettoyage des objets non utilisés</a> <br>
+<a href="#viii-collaboration">VIII- Collaboration</a></p>
+<h2 id="i-init-dun-depot-local">I- Init d'un dépôt local<a class="headerlink" href="#i-init-dun-depot-local" title="Permanent link">&para;</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>projet_git<span class="w"> </span><span class="c1"># se positionner dans votre espace de travail</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>git<span class="w"> </span>init<span class="w"> </span><span class="c1"># initialiser un dépôt</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Que remarquez vous dans votre espace de travail après avoir lancé la commande d'initialisation du dépôt ?</p>
+</div>
+<h3 id="ajout-de-fichiers">Ajout de fichiers<a class="headerlink" href="#ajout-de-fichiers" title="Permanent link">&para;</a></h3>
+<h4 id="un-peu-de-markdown">Un peu de markdown<a class="headerlink" href="#un-peu-de-markdown" title="Permanent link">&para;</a></h4>
+<p><a href="../../../frameworks/git/#markdown-and-co">Documentation de markdown ici</a></p>
+<p><code>Markdown</code> est le type de fichier utilisé par les plateformes de git pour la génération des pages statiques de documentation des projets. Vous pouvez insérer dans un fichier <code>.md</code> des balises <code>html</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#__codelineno-1-30">30</a></span>
+<span class="normal"><a href="#__codelineno-1-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="hll">&lt;pre&gt;
+</span><a id="__codelineno-1-2" name="__codelineno-1-2"></a> _  _  ____  ____    __    __    ____  _   _    __     
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>( \/ )(_  <span class="ge">_)(  _</span> \  /__\  (  )  (  _ \( )<span class="ge">_( )  /_</span>_\    
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a> \  /  <span class="ge">_)(_</span>  )(_) )/(__)\  )(__  )___/ ) _ (  /(__)\   
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>  \/  (____)(____/(__)(__)(____)(__)  (<span class="ge">_) (_</span>)(__)(__)  
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="hll">&lt;/pre&gt;
+</span><a id="__codelineno-1-8" name="__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="gh"># Bienvenu sur mon super blog!</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>Laboratoire de prise en main de Git
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>Ce laboratoire ouvre plusieurs perspective à savoir:
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="k">*</span><span class="w"> </span>L&#39;envoi des modifications sur un site distant
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="k">*</span><span class="w"> </span>La manipulation des historique des commits
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a>[<span class="nt">Pour tout autre préoccupation mon IA reste disponible</span>](<span class="na">https://chat.openai.com</span>)
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a>A bientôt 🥳
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="k">&gt; </span><span class="ge">[!NOTE]</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="k">&gt; </span><span class="ge">C&#39;est un projet démo pour la création d&#39;un blog personnel que je voudrais partager avec la communauté github.</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="gu">## Contributeurs</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a>
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="k">-</span><span class="w"> </span>Moi et moi seul 🤓
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a>
+<a id="__codelineno-1-30" name="__codelineno-1-30"></a>
+<a id="__codelineno-1-31" name="__codelineno-1-31"></a>© &lt; Mon entreprise &gt; Unamur, 2024
+</code></pre></div></td></tr></table></div>
+<p>Pour faire cette jolie bannière passez par <a href="https://patorjk.com/software/taag/" target="_blank">ici</a></p>
+<p>Créer un fichier <code>README.md</code> et copiez le contenu précédent à l'intérieur. Le fichier <code>README.md</code> est l'entrée de notre site statique sur github similaire à <code>index.html</code> pour le <code>html</code></p>
+<h4 id="etat-du-depot-local">Etat du dépôt local<a class="headerlink" href="#etat-du-depot-local" title="Permanent link">&para;</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>git<span class="w"> </span>status<span class="w"> </span><span class="c1"># inspecter l&#39;état des fichiers</span>
+</code></pre></div></td></tr></table></div>
+<p><img alt="Git status" src="../../../img/git_screenshots/local_status.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remarquez que l'extension <a href="https://marketplace.visualstudio.com/items?itemName=hnw.vscode-auto-open-markdown-preview" target="_blank"><code>Auto-Open Markdown Preview</code></a> nous permet d'avoir  nous permet d'avoir un aperçu de notre fichier markdown à droite.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Commentez les fournies par la commande <code>git status</code> en console ?</li>
+<li>Que veulent dire <code>1</code> et <code>2</code>  ?</li>
+</ol>
+</div>
+<h3 id="premier-commit">Premier commit<a class="headerlink" href="#premier-commit" title="Permanent link">&para;</a></h3>
+<p>A chaque commande faite <code>git status</code> pour voir l'état des fichiers.</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1"># git add .</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1"># git add -A </span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1"># (pour tracker tous les fichiers du répertoire de travail)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>git<span class="w"> </span>add<span class="w"> </span>README.md
+</code></pre></div></td></tr></table></div>
+<img alt="Local add files" src="../../../img/git_screenshots/local_add.png" /></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1">### Description courte</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="c1">###### Nous allons lancer la commande suivante</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Ajout de mon premier commit depuis le local repository&quot;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c1"># ======== OU ===================================</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="c1">### Description longue sur plusieurs lignes.</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Ajout d&#39;une nouvelle fonctionnalité</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="s2">Cette fonctionnalité permet aux utilisateurs de...&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p><img alt="Local commit" src="../../../img/git_screenshots/local_commit.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Que veut dire <code>1</code> ?</li>
+<li>Ce numéro est-il si court ? Astuce (faites <code>git log</code>)</li>
+</ol>
+</div>
+<p>Un <code>git status</code> vous permet de constater que votre répertoire de travail est propre.</p>
+<h2 id="ii-zones-et-cycles-de-vie-des-fichiers">II- Zones et cycles de vie des fichiers<a class="headerlink" href="#ii-zones-et-cycles-de-vie-des-fichiers" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Rappelez les zones de git que vous connaissez ?</li>
+<li>Rappelez les commandes pour passez d'une zone à une autre et l'état des fichiers ?</li>
+</ol>
+</div>
+<pre class="mermaid"><code>graph RL
+    subgraph local[local repository]
+        subgraph main[branche main]
+            subgraph manipulation[zones de manipulation]
+                working[working space]
+                index[index/cache/stage]
+            end
+            repository
+            remise
+            E[ ]
+        end
+        working--&gt;|git add|index
+        index--&gt;|1-desindexer|working
+        index--&gt;|git commit|repository
+        repository--&gt;|2-Annuler un commit|index
+        repository--&gt;|3-Annuler un commit|working
+        manipulation--&gt;|4-Mettre de côté|E
+        E--&gt;remise
+        remise--&gt;|5-Restaurez la remise|manipulation
+
+    end
+    subgraph remote[remote repository]
+        remote_main[main]
+    end
+    local--&gt;|push|remote
+    remote--&gt;|pull|local</code></pre>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Quelles sont les commandes à utiliser en <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code> ?</li>
+<li>Quels sont les espaces que <code>git stash</code> sauvegarde ?</li>
+<li>Quelles sont les commandes possibles que vous connaissez pour annuler le dernier commit ? Et pour revenir à n'importe quel commit ?</li>
+<li>Différence entre <code>git reset</code> et <code>git revert</code> ?</li>
+<li>Différence entre <code>git rm --cached</code> et <code>git restore --staged</code> ?</li>
+<li>Quelle commande utiliserez-vous pour restaurer un fichier dans le <code>worktree</code> et le <code>stage</code> à son état tel qu'il était trois commits avant le <code>HEAD</code>?</li>
+</ol>
+<p>Utiles: <br/>
+<span class="twemoji youtube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg></span> <a href="https://www.youtube.com/watch?v=Ayr17xFKMHU&amp;list=PLsm134NGfeYP67pmUoKSWb53lqVqA7oTg&amp;index=3" target="_blank">GIT : stash, revert, restore, rebase, reset, cherry-pick</a> <br/>
+<span class="twemoji youtube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg></span> <a href="https://www.youtube.com/watch?v=VFvu83YaAow&amp;list=PLPoAfTkDs_JbMPY-BXzud0aMhKKhcstRc&amp;index=9" target="_blank">Zones et cycles de vie des fichiers</a></p>
+</div>
+<!--
+1- 
+(1)  git restore --staged
+(2) git reset --soft hash_du_commit
+(3) git reset --mixed hash_du_commit ([--soft, --mixed, --hard, --merge])
+(4) git stash
+(5) git stash pop 
+
+2- `git stash` sauvegarde la zone de travail et la zone d'index.
+
+3-  Pour annuler un dernier commit
+    git reset --hard HEAD^
+    git revert hash_du_commit
+    git commit --amend # Permet de recréer le dernier commit
+    git rebase -i # Permet de revenir à n'importe quel commit
+
+4- Différence entre `git reset` et `git revert`
+
+git reset: 
+    Réinitialise l'état de votre branche à un commit antérieur.
+
+    Effets
+        - Supprime les modifications non commises
+
+        - Modifie l'historique des commits: Le commit HEAD et les commits suivants sont supprimés de l'historique de la branche.
+
+    Utilisation:
+        - Annuler des erreurs locales: Utilisé pour annuler des erreurs que vous avez faites dans votre branche locale, comme une mauvaise modification de code.
+
+        - Revenir à un état antérieur: Utilisé pour revenir à un état antérieur de votre branche avant une modification importante.
+
+git revert:
+    Crée un nouveau commit qui annule les modifications apportées par un commit antérieur.
+
+    Effets: 
+        - Crée un nouveau commit qui annule les modifications apportées par un commit antérieur.
+
+    Effets: 
+        - Conserve les modifications non commises.
+
+        - Ajoute un nouveau commit
+
+    Utilisation:
+        - Annuler des commits publics: Utilisé pour annuler des commits qui ont déjà été poussés vers un dépôt distant, car il ne modifie pas l'historique des commits existants.
+
+        - Collaborer sur des branches: Utilisé pour annuler des modifications dans une branche sans affecter l'historique des commits d'autres contributeurs.
+
+5- Différence entre `git rm --cached` et `git restore --staged`
+
+git rm --cached nom_du_fichier
+    # supprime un fichier de l'index. La suppression est propagée vers les dépôts
+    # peut être utilisé pour exclure un fichier d'un commit.
+
+git restore --staged nom_du_fichier
+    # Désindexe un fichier
+    # restore/rétablit un fichier à partir de l'index.
+    # n'a aucun effet sur les commits.
+
+6- Quelle commande utiliserez-vous pour restaurer un fichier dans le `worktree` et le `stage` à son état tel qu'il était trois commits avant le `HEAD`?
+
+git restore --source=HEAD~3 --staged --worktree nom_du_fichier
+-->
+
+<h2 id="iii-init-depot-distant">III- Init Dépôt distant<a class="headerlink" href="#iii-init-depot-distant" title="Permanent link">&para;</a></h2>
+<h3 id="premier-commit_1">Premier commit<a class="headerlink" href="#premier-commit_1" title="Permanent link">&para;</a></h3>
+<p>La création du dépôt avec un fichier <code>README.md</code> initial génère un commit.</p>
+<p><img alt="Remote create Github" src="../../../img/git_screenshots/remote_create_github.png" /></p>
+<p><img alt="Remote first commit" src="../../../img/git_screenshots/remote_first_commit.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Remarquez que la description est mise dans le fichier <code>readme</code> et qu'un premier commit a été fait sur le remote</p>
+</div>
+<h3 id="modification-sur-le-remote">Modification sur le remote<a class="headerlink" href="#modification-sur-le-remote" title="Permanent link">&para;</a></h3>
+<p>Essayons à présent de modifier le <code>README.md</code> en changeant le titre <del><code>tpgit</code></del></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="gh"># Bienvenu sur mon super blog!</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Laboratoire de prise en main de Git
+</code></pre></div>
+<p><img alt="Readme modification" src="../../../img/git_screenshots/remote_readme_change_commit.png" width="48%" /> <img alt="Readme modification commit" src="../../../img/git_screenshots/remote_readme_modif.png" width="50%" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Remarquez que cette modification nécessite un nouveau commit. Le nombre de commit sur le dépôt distant est passé à <code>2</code>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Est-ce le dépôt local et le dépôt distant ont les mêmes historiques de commit ?</p>
+</div>
+<h2 id="iv-synchronisation-avec-le-depot-distant">IV- Synchronisation avec le dépôt distant<a class="headerlink" href="#iv-synchronisation-avec-le-depot-distant" title="Permanent link">&para;</a></h2>
+<p>Pour ce faire nous allons suivre les étapes suivantes: </p>
+<h3 id="lier-les-depots-local-et-remote">Lier les dépôts local et remote<a class="headerlink" href="#lier-les-depots-local-et-remote" title="Permanent link">&para;</a></h3>
+<p>Pour lier les dépôts local et remote, vous devriez faire la commande <code>git remote add origin &lt;remote_url&gt;</code></p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span>
+<span class="normal"><a href="#__codelineno-6-6">6</a></span>
+<span class="normal"><a href="#__codelineno-6-7">7</a></span>
+<span class="normal"><a href="#__codelineno-6-8">8</a></span>
+<span class="normal"><a href="#__codelineno-6-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1"># Voir la liste actuelle des remotes</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>git<span class="w"> </span>remote<span class="w"> </span>-v
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="c1"># La liste est vide actuellement. </span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="c1"># Nous allons associé notre dépôt distant</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/vidalpha/tpgit.git
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="c1"># Afficher à nouveau les remotes</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>git<span class="w"> </span>remote<span class="w"> </span>-v
+</code></pre></div></td></tr></table></div>
+<img alt="Remote create Github" src="../../../img/git_screenshots/local_add_remote.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Que veulent dire les autorisations données sur le dépôt distant (<code>fetch</code> et <code>push</code>) ?</li>
+<li>Connaissez vous la commande <code>git pull</code> ? Quel résultat elle produit ?</li>
+<li>Quelles sont les deux opérations effectuées par la commande <code>git pull</code>?</li>
+</ol>
+</div>
+<p>A la fin de la commande <code>git remote add origin &lt;remote_url&gt;</code>, nous arrivons à cette situation:</p>
+<pre class="mermaid"><code>graph RL
+    subgraph local
+    master
+    end
+    subgraph remote
+    main
+    end
+    local--&gt;|push|remote
+    remote--&gt;|fetch|local</code></pre>
+<p>Pour autant les deux branches ne sont pas encore liées et sont bien comme ceci:</p>
+<table>
+<tr>
+<td>
+
+
+<pre class="mermaid"><code>timeline
+    title local master branch timeline
+    56aa817 : Ajout de mon premier commit depuis le local repository</code></pre>
+
+</td>
+<td>
+
+<pre class="mermaid"><code>timeline
+    title remote main branch timeline
+    ae35b32 : Initial commit
+    b8a7054 : Update README.md</code></pre>
+
+
+</td>
+</tr>
+
+</table>
+
+<p>Pour vous en rendre compte excécuter la commande suivante:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1"># commande simplifiée</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="c1"># git ls-remote origin</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="c1"># commande détaillée</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>git<span class="w"> </span>remote<span class="w"> </span>show<span class="w"> </span>origin
+</code></pre></div></td></tr></table></div>
+<p><img alt="Affichage des branches distantes avant upstream" src="../../../img/git_screenshots/local_show_remotes_branches_before_upstream.png" /></p>
+<p>Comme vous le voyez, il n'est dans indiquer la branche qui tracke la branche remote <code>main</code>.</p>
+<p>Dans la section suivante, nous allons lier la branche locale à la branche distante.</p>
+<h3 id="lier-les-branches-locale-et-distante">Lier les branches: locale et distante<a class="headerlink" href="#lier-les-branches-locale-et-distante" title="Permanent link">&para;</a></h3>
+<p>Cette liaison est possible grâce à la commande:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="c1"># git branch --set-upstream-to=origin branche_locale </span>
+</code></pre></div></td></tr></table></div>
+<p>Cependant, elle se met aussi en place automatiquement lors du premier <code>push</code> et pour cela, nous devrions utiliser l'option <code>-u|--set-upstream</code> pour cette première fois. Les fois prochaines la commande <code>git push</code> seule, suffira.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c1"># git push -u|--set-upstream origin &lt;branche_locale&gt;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Que se passera t-il après un <code>push</code> si on maintient le nom <code>master</code>? Astuce (nouvelle branche remote)</li>
+<li>Si nous renommions notre branche locale en <code>main</code>, la commande <code>push</code> échouera. Nous devrions utiliser plutôt dans ce cas-là la commande <code>pull</code>. Pourriez-vous expliquer pourquoi ? Astuce (principe entre <code>pull</code> et <code>push</code>)</li>
+<li>A la suite des questions précdentes, le <code>pull</code> également échouera. Pourquoi ? Astuce (ancêtre commun absent)</li>
+</ol>
+</div>
+<p>Testons tout ceci.</p>
+<h4 id="push-command">Push command<a class="headerlink" href="#push-command" title="Permanent link">&para;</a></h4>
+<p>Nous allons essayer d'envoyer sur le dépôt distant nos modifications.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>git<span class="w"> </span>push<span class="w"> </span>--set-upstream<span class="w"> </span>origin<span class="w"> </span>master
+</code></pre></div></td></tr></table></div>
+<p><img alt="Local push avec création autiomatique d'un pull request" src="../../../img/git_screenshots/local_push_pull_request.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remarquez sur github qu'une nouvelle branche distante du même nom a été créée. Remarquez aussi que la branche locale <code>master</code> traque la nouvelle branche distante <code>master</code>.</p>
+</div>
+<p>Pour la suite au lieu de créer une nouvelle branche <code>master</code> sur la remote, nous allons plutôt renommer notre branche en local en <code>main</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Avant de continuer supprimer la nouvelle branche distante <code>master</code> qui a été créée.</p>
+</div>
+<h4 id="renommer-une-branche">Renommer une branche<a class="headerlink" href="#renommer-une-branche" title="Permanent link">&para;</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1"># Renomme la branche sur laquelle on se trouve</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="c1"># git branch -M &lt;nouveau_nom&gt;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main
+</code></pre></div></td></tr></table></div>
+<p><img alt="Remote create Github" src="../../../img/git_screenshots/local_branche_rename.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remarquez que le nom de la branche a bien changé en console</p>
+</div>
+<p>Essayons de faire un <code>push</code> avec la branche renommée. Vous remarquerez que le <code>push</code> échoue, ce qui est normal.</p>
+<p><img alt="Push remote failed" src="../../../img/git_screenshots/local_push_before_pull.png" /></p>
+<h4 id="pull-command">Pull command<a class="headerlink" href="#pull-command" title="Permanent link">&para;</a></h4>
+<p>Et le <code>pull</code> ?</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>git<span class="w"> </span>pull<span class="w"> </span>--set-upstream<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div></td></tr></table></div>
+<p><img alt="Pull remote failed" src="../../../img/git_screenshots/local_merge_error.png" /></p>
+<p>😅 Encore une autre erreur !!!</p>
+<h4 id="merge-rebase-squash">Merge - rebase - squash<a class="headerlink" href="#merge-rebase-squash" title="Permanent link">&para;</a></h4>
+<p>Bon! Abordons alors les concepts de <code>merge</code>, <code>rebase</code> et <code>squash commit</code> afin de mieux nous en sortir puisque un certain <code>merge</code> a échoué.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><img alt="Squash Merge Rebase" src="../../../img/git_screenshots/squash_merge_rebase.png" /></p>
+<p><em>Source Livre: Git - Maîtrisez la gestion de vos versions (concepts, utilisation et cas pratiques) (4e édition) de Samuel DAUZON, Editions ENI, 2016</em></p>
+<p><img alt="Squash Merge Rebase" src="../../../img/git_screenshots/squash_merge_rebase_synthese.png" /></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Pouvez-vous expliquez ce qui s'est produit pour que la fusion des branches distante et locale échoue ? Astuce (<span class="twemoji youtube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg></span><a href="https://www.youtube.com/watch?v=0chZFIZLR_0" target="_blank"><code>git merge</code> Vs <code>git rebase</code> Vs <code>Squash commit</code></a>)</li>
+<li>Quel est le comportement par défaut de <code>git merge</code> ? Astuce (commit)</li>
+<li>Dans quel cas le <code>git merge</code> fast-foward produit le même résultat que <code>git rebase</code>? Astuce (<span class="twemoji youtube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg></span><a href="https://www.youtube.com/watch?v=I2NQHB64ol4" target="_blank"><code>git rebase</code> Vs <code>git merge</code> en pratique</a>)</li>
+</ol>
+</div>
+<p>Comme vous venez de le comprendre, pour résumer la situation:</p>
+<ul>
+<li>
+<p><code>git merge</code>: ne peut être utilisé car les branches n'ont pas d'ancêtre commun. C'est pour cela la commande pull a échouée.</p>
+</li>
+<li>
+<p><code>squash commit</code> (<code>git rebase -i ...</code>): résumera l'historique des commits de la branche distance.</p>
+</li>
+<li>
+<p><code>git rebase</code>: nous recréera l'historique. C'est cette option nous allons choisir.</p>
+</li>
+</ul>
+<p>Afin de régler ce problème, nous allons utiliser <code>git rebase</code>, une vrai machine à voyager dans le temps. 🚀</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>La commande <code>git rebase origin/main</code> réorganise les commits de la branche actuelle en les replaçant au-dessus des commits de la branche <code>main</code>. Cela signifie que les commits de la branche actuelle seront remis à jour pour faire référence aux commits de <code>main</code> comme point de départ.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Conseil</p>
+<p>Que ce soit <code>git merge &lt;branche_a_integrer&gt;</code> ou <code>git rebase &lt;branche_a_integrer&gt;</code>, il faut se positionner sur la branche source sur laquelle on veut rapatrier la branche à intégrer.</p>
+</div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="c1"># main: le nom de la branche distante</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="c1"># option -i: pour utiliser rebase en mode interactif</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>git<span class="w"> </span>rebase<span class="w"> </span>-i<span class="w"> </span>origin/main
+</code></pre></div></td></tr></table></div>
+<p><img alt="Git rebase" src="../../../img/git_screenshots/local_rebase.png" /></p>
+<p>Nous sommes en mode interractif avec l'éditeur <code>vi</code> (<a href="https://linux.goffinet.org/administration/traitement-du-texte/editeur-de-texte-vi/" target="_blank">Ce lien</a> peut vous être utile). Pour ceux qui ne vous y connaissez pas suivez mes conseils pour vous en sortir.</p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<p>Commentez les points <code>1</code>, <code>2</code>, <code>3</code> et <code>4</code> ?</p>
+</div>
+<p>Mais avant d'aller loin, puisque je sais lire dans l'avenir, je prédis que la commande <code>rebase</code> aussi ne marchera pas 😂. Sacré oiseau de mauvaise augure que je suis!!!</p>
+<p>Fermons l'éditeur <code>i</code> en acceptant le rebase.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="c1"># Appuyez sur la touch `echap` d&#39;abord</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>:q!
+</code></pre></div></td></tr></table></div>
+<p><img alt="Conflit lors d'un rebase" src="../../../img/git_screenshots/local_rebase_conflit.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Pourquoi le <code>rebase</code> n'a pas marché ?</li>
+<li>Commentez les <code>hints</code> en jaune ?</li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remarquez dans la zone en vert en bas dans la console que la stratégie <code>rebase</code> est toujours en cours ?</p>
+</div>
+<h4 id="gestion-des-conflits">Gestion des conflits<a class="headerlink" href="#gestion-des-conflits" title="Permanent link">&para;</a></h4>
+<p>Un conflit Git survient lorsque deux branches ou commits modifient les mêmes parties d'un même fichier de manière incompatible. Dans cette section, nous allons apprendre à résoudre les conflits.</p>
+<h5 id="structure-dun-conflit">Structure d'un conflit<a class="headerlink" href="#structure-dun-conflit" title="Permanent link">&para;</a></h5>
+<p><img alt="Schema d'un conflit" src="../../../img/git_screenshots/local_conflit_schema.png" /></p>
+<p><strong>Revenons à VS Code</strong></p>
+<p><img alt="Schema d'un conflit" src="../../../img/git_screenshots/local_vscode_conflit_help.png" /></p>
+<h5 id="resolve-in-merge-editor">Resolve in merge editor<a class="headerlink" href="#resolve-in-merge-editor" title="Permanent link">&para;</a></h5>
+<p>Suivez les instructions dans <code>VS Code</code> pour terminer.</p>
+<p><img alt="Schema d'un conflit" src="../../../img/git_screenshots/local_conflit_vscode.png" /></p>
+<div class="admonition abstract">
+<p class="admonition-title">Résumé</p>
+<ol>
+<li>Vous gardez la zone que vous voulez</li>
+<li>Vous enlevez la zone que vous ne voulez pas</li>
+<li>Ne jamais oublier d'enlever les <del>délimiteurs</del> sinon ils seront commités</li>
+</ol>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Ne jamais oublier</p>
+<p>Après la résolution d'un conflit, un <code>`commit</code> nécessaire pour prendre en compte les modification.</p>
+</div>
+<p>Nous venons de résoudre le <code>conflit</code> nous allons alors faire un <code>commit</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>git<span class="w"> </span>add<span class="w"> </span>README.md
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Résolution du conflit sur le fichier README.md&quot;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition example">
+<p class="admonition-title">Exercice</p>
+<p><a href="https://github.com/skills/resolve-merge-conflicts" target="_blank">Pratiquer la résolution des conflits ...</a></p>
+</div>
+<h4 id="finalisation-du-rebase">Finalisation du rebase<a class="headerlink" href="#finalisation-du-rebase" title="Permanent link">&para;</a></h4>
+<p>A présent nous allons continuer notre <code>rebase</code>.</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>git<span class="w"> </span>status<span class="w"> </span><span class="c1"># Avec `git status`, vous aurez le résumé de notre situation actuelle.</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>git<span class="w"> </span>rebase<span class="w"> </span>--continue
+</code></pre></div></td></tr></table></div>
+<img alt="Rebase réussie" src="../../../img/git_screenshots/local_rebase_success.png" /></p>
+<p>Cette dernière commande met fin à notre aventure de récupérer les changements provenant du <code>remote</code>. Avant d'envoyer nos modifications en ligne, apprécions l'historique des commits après le <code>rebase</code>.</p>
+<p><img alt="Git log après la réussite de rebase" src="../../../img/git_screenshots/local_after_rebase.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Quels constats faites-vous par rapport à l'ordre des commits dans l'historique?</li>
+<li>Est ce que les hashs des commits sont maintenus ?</li>
+<li>Le fichier <code>README.md</code> est-il bien présent dans votre espace de travail? Que donne la commande <code>git status</code>?</li>
+</ol>
+</div>
+<p>Bon voilà, vous êtes un(e) pro de fusions de branches et d'historiques 🤓. Nous pouvons envoyez nos modifications en ligne.</p>
+<h4 id="envoi-des-modifications-sur-le-depot-distant">Envoi des modifications sur le dépôt distant<a class="headerlink" href="#envoi-des-modifications-sur-le-depot-distant" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div></td></tr></table></div>
+<img alt="Envoie des modifications en ligne" src="../../../img/git_screenshots/local_push_after_rebase_success.png" /></p>
+<p>Nous pouvons aussi utiliser la commande <code>git remote show origin</code> pour nous assurer que tout ok et que la branche locale <code>main</code> trackée bien la branche distante <code>main</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>git<span class="w"> </span>remote<span class="w"> </span>show<span class="w"> </span>origin
+</code></pre></div></td></tr></table></div>
+<p><img alt="Affiche que la branche est bien trackée" src="../../../img/git_screenshots/local_remote_show_tracked.png" /></p>
+<h3 id="resume-des-commandes-de-base">Résumé des commandes de base<a class="headerlink" href="#resume-des-commandes-de-base" title="Permanent link">&para;</a></h3>
+<p>Nous avions pris un long chemin afin d'aborder des concepts plus ou moins avancés, mais la procédure de récupération et d'envoi en ligne de vos modifications n'est pas si compliquée.</p>
+<blockquote>
+<p>Et puis qui peut le plus, peut le moins dit-on? 😜</p>
+</blockquote>
+<h4 id="cloner-un-depot">Cloner un dépôt<a class="headerlink" href="#cloner-un-depot" title="Permanent link">&para;</a></h4>
+<p>Pour les commandes suivantes, créer un autre répertoire</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-19-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-19-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-19-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-19-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-19-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-19-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-19-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-19-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-19-10">10</a></span>
+<span class="normal"><a href="#__codelineno-19-11">11</a></span>
+<span class="normal"><a href="#__codelineno-19-12">12</a></span>
+<span class="normal"><a href="#__codelineno-19-13">13</a></span>
+<span class="normal"><a href="#__codelineno-19-14">14</a></span>
+<span class="normal"><a href="#__codelineno-19-15">15</a></span>
+<span class="normal"><a href="#__codelineno-19-16">16</a></span>
+<span class="normal"><a href="#__codelineno-19-17">17</a></span>
+<span class="normal"><a href="#__codelineno-19-18">18</a></span>
+<span class="normal"><a href="#__codelineno-19-19">19</a></span>
+<span class="normal"><a href="#__codelineno-19-20">20</a></span>
+<span class="normal"><a href="#__codelineno-19-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="c1"># Allez sur github, récupérer l&#39;URL du dépôt et sur votre machine, faite</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="hll">git<span class="w"> </span>clone<span class="w"> </span>https://github.com/vidalpha/tpgit.git
+</span><a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="c1"># Ajoutez vos modifications</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="c1"># Indexez les fichiers</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a>git<span class="w"> </span>add<span class="w"> </span>-A
+<a id="__codelineno-19-6" name="__codelineno-19-6"></a><span class="c1"># Faites un commit</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Mon premier commit&quot;</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8"></a><span class="c1"># Faites un push</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>master
+<a id="__codelineno-19-10" name="__codelineno-19-10"></a>
+<a id="__codelineno-19-11" name="__codelineno-19-11"></a>
+<a id="__codelineno-19-12" name="__codelineno-19-12"></a><span class="c1"># Les prochaines fois si vous travaillez en collaboration.</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13"></a><span class="c1"># Ajoutez vos modifications</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14"></a><span class="c1"># Indexez les fichiers</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15"></a>git<span class="w"> </span>add<span class="w"> </span>-A
+<a id="__codelineno-19-16" name="__codelineno-19-16"></a><span class="c1"># Faites un commit</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Mon premier commit&quot;</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18"></a><span class="c1"># Mettez-vous à jour par rapport au serveur</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19"></a>git<span class="w"> </span>pull
+<a id="__codelineno-19-20" name="__codelineno-19-20"></a><span class="c1"># Envoyez vos modifications</span>
+<a id="__codelineno-19-21" name="__codelineno-19-21"></a>git<span class="w"> </span>push
+</code></pre></div></td></tr></table></div>
+<p>A ce stade, voici la structure de nos branches locale et remote</p>
+<pre class="mermaid"><code>graph RL
+    subgraph local
+    local_main[main]
+    end
+    subgraph remote
+    remote_main[main]
+    end
+    local--&gt;|push|remote
+    remote--&gt;|fetch|local
+    local_main-.tracks.-&gt; remote_main</code></pre>
+<h2 id="v-gitignore">V- Gitignore<a class="headerlink" href="#v-gitignore" title="Permanent link">&para;</a></h2>
+<p>Dans cette section nous allons apprendre à ignorer des fichiers ou répertoires sensibles. Afin que <code>git</code> tienne compte des fichiers ou répertoires à ignorer, nous allons mettre le nom de ces fichiers/dossiers dans un fichier particulier <code>.gitignore</code></p>
+<p>1) Créer le fichier <code>secret.yml</code> avec ce contenu:</p>
+<p>Vous mettrez vos supers fake <code>username</code> et <code>password</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>git_credentials:
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    username: bonbolibo
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    password: tunetrouveraspas
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Ne mettez pas vos informations sensibles ou vos crédentials git. Ce n'est juste qu'un exemple pour la suite.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Après avoir ajouté le fichier <code>secret.yml</code>, lancez la commande <code>git status</code>. Commentez ce que vous voyez ?</p>
+</div>
+<p>2) Ajouter le fichier <code>.gitignore</code></p>
+<p>3) Dans le fichier <code>.gitignore</code>, mettez <code>secret.yml</code> et enregistrer</p>
+<p>4) Faites à nouveau <code>git status</code>. Que remarquez vous ?</p>
+<p>5) Envoyez la modification en ligne avec le message de commit <code>Ajout du fichier .gitignore</code></p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Le fichier <code>secret.yml</code> est-il présent sur le dépôt distant ?</p>
+</div>
+<h2 id="vi-developpements-paralleles">VI- Développements parallèles<a class="headerlink" href="#vi-developpements-paralleles" title="Permanent link">&para;</a></h2>
+<p>Les branches sont très utiles pour exploirer des pistes de fonctionnalités sans perturber la branche principale (dans notre cas il s'agit de <code>main</code>). Les modifications sur la branche auxilliaire pourront être fusionnées avec la branche principale.</p>
+<p>C'est ce que nous allons essayer dans cette section.</p>
+<p><strong>Tâches</strong></p>
+<p>1) Apportez quelques modifications au fichier <code>README.md</code></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-21-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-21-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-21-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-21-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-21-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-21-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-21-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-21-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-21-10">10</a></span>
+<span class="normal"><a href="#__codelineno-21-11">11</a></span>
+<span class="normal"><a href="#__codelineno-21-12">12</a></span>
+<span class="normal"><a href="#__codelineno-21-13">13</a></span>
+<span class="normal"><a href="#__codelineno-21-14">14</a></span>
+<span class="normal"><a href="#__codelineno-21-15">15</a></span>
+<span class="normal"><a href="#__codelineno-21-16">16</a></span>
+<span class="normal"><a href="#__codelineno-21-17">17</a></span>
+<span class="normal"><a href="#__codelineno-21-18">18</a></span>
+<span class="normal"><a href="#__codelineno-21-19">19</a></span>
+<span class="normal"><a href="#__codelineno-21-20">20</a></span>
+<span class="normal"><a href="#__codelineno-21-21">21</a></span>
+<span class="normal"><a href="#__codelineno-21-22">22</a></span>
+<span class="normal"><a href="#__codelineno-21-23">23</a></span>
+<span class="normal"><a href="#__codelineno-21-24">24</a></span>
+<span class="normal"><a href="#__codelineno-21-25">25</a></span>
+<span class="normal"><a href="#__codelineno-21-26">26</a></span>
+<span class="normal"><a href="#__codelineno-21-27">27</a></span>
+<span class="normal"><a href="#__codelineno-21-28">28</a></span>
+<span class="normal"><a href="#__codelineno-21-29">29</a></span>
+<span class="normal"><a href="#__codelineno-21-30">30</a></span>
+<span class="normal"><a href="#__codelineno-21-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>&lt;pre&gt;
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a> _  _  ____  ____    __    __    ____  _   _    __     
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a>( \/ )(_  <span class="ge">_)(  _</span> \  /__\  (  )  (  _ \( )<span class="ge">_( )  /_</span>_\    
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a> \  /  <span class="ge">_)(_</span>  )(_) )/(__)\  )(__  )___/ ) _ (  /(__)\   
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a>  \/  (____)(____/(__)(__)(____)(__)  (<span class="ge">_) (_</span>)(__)(__)  
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a>
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a>&lt;/pre&gt;
+<a id="__codelineno-21-8" name="__codelineno-21-8"></a>
+<a id="__codelineno-21-9" name="__codelineno-21-9"></a><span class="gh"># Bienvenu sur mon super blog!</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10"></a>
+<a id="__codelineno-21-11" name="__codelineno-21-11"></a><span class="gu">## Mes tutoriels</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12"></a>
+<a id="__codelineno-21-13" name="__codelineno-21-13"></a><span class="k">1.</span> Intégrer des graphes avec mermaid
+<a id="__codelineno-21-14" name="__codelineno-21-14"></a><span class="k">2.</span> Mettre en place la documentation d&#39;un projet avec mkdocs
+<a id="__codelineno-21-15" name="__codelineno-21-15"></a>
+<a id="__codelineno-21-16" name="__codelineno-21-16"></a><span class="k">&gt; </span><span class="ge">[!NOTE]</span>
+<a id="__codelineno-21-17" name="__codelineno-21-17"></a><span class="k">&gt; </span><span class="ge">C&#39;est un projet démo pour la création d&#39;un blog personnel que je voudrais partager avec la communauté github.</span>
+<a id="__codelineno-21-18" name="__codelineno-21-18"></a>
+<a id="__codelineno-21-19" name="__codelineno-21-19"></a><span class="gu">## Contributeurs</span>
+<a id="__codelineno-21-20" name="__codelineno-21-20"></a>
+<a id="__codelineno-21-21" name="__codelineno-21-21"></a><span class="k">-</span><span class="w"> </span>Moi et moi seul 🤓
+<a id="__codelineno-21-22" name="__codelineno-21-22"></a>
+<a id="__codelineno-21-23" name="__codelineno-21-23"></a>[<span class="nt">Pour tout autre préoccupation mon IA reste disponible</span>](<span class="na">https://chat.openai.com</span>)
+<a id="__codelineno-21-24" name="__codelineno-21-24"></a>
+<a id="__codelineno-21-25" name="__codelineno-21-25"></a>A bientôt 🥳
+<a id="__codelineno-21-26" name="__codelineno-21-26"></a>
+<a id="__codelineno-21-27" name="__codelineno-21-27"></a>
+<a id="__codelineno-21-28" name="__codelineno-21-28"></a><span class="gu">## Copyright</span>
+<a id="__codelineno-21-29" name="__codelineno-21-29"></a>
+<a id="__codelineno-21-30" name="__codelineno-21-30"></a>
+<a id="__codelineno-21-31" name="__codelineno-21-31"></a>© &lt; Mon entreprise &gt; Unamur, 2024
+</code></pre></div></td></tr></table></div>
+<p><img alt="Affichage de README.md après modification" src="../../../img/git_screenshots/local_vscode_apres_modification.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Que veulent dire ces indications (<code>1</code>, <code>2</code> et <code>3</code>) de <code>VS code</code> ?</p>
+</div>
+<h3 id="basculer-vers-une-nouvelle-branche">Basculer vers une nouvelle branche<a class="headerlink" href="#basculer-vers-une-nouvelle-branche" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-22-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-22-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-22-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-22-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-22-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-22-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-22-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-22-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-22-10">10</a></span>
+<span class="normal"><a href="#__codelineno-22-11">11</a></span>
+<span class="normal"><a href="#__codelineno-22-12">12</a></span>
+<span class="normal"><a href="#__codelineno-22-13">13</a></span>
+<span class="normal"><a href="#__codelineno-22-14">14</a></span>
+<span class="normal"><a href="#__codelineno-22-15">15</a></span>
+<span class="normal"><a href="#__codelineno-22-16">16</a></span>
+<span class="normal"><a href="#__codelineno-22-17">17</a></span>
+<span class="normal"><a href="#__codelineno-22-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="c1"># Voir la liste des branches</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="c1"># git branch</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a>
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="c1"># Créer une nouvelle branche</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="c1"># git branch ma_nouvelle_branche</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6"></a>
+<a id="__codelineno-22-7" name="__codelineno-22-7"></a><span class="c1"># Supprimer une branche</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8"></a><span class="c1"># git  branch -d nom_de_la_branche</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9"></a>
+<a id="__codelineno-22-10" name="__codelineno-22-10"></a><span class="c1"># Basculer sur une autre branche</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11"></a><span class="c1"># (switch à partir de la version 2.23)</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12"></a><span class="c1"># git checkout|switch  branche_apres_switch</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13"></a>
+<a id="__codelineno-22-14" name="__codelineno-22-14"></a><span class="c1"># Créer une branche et basculer dessus automatiquement</span>
+<a id="__codelineno-22-15" name="__codelineno-22-15"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>mermaid
+<a id="__codelineno-22-16" name="__codelineno-22-16"></a>
+<a id="__codelineno-22-17" name="__codelineno-22-17"></a><span class="c1"># Voir la branche sur laquelle on se trouve. Il y a une `*` devant la branche active</span>
+<a id="__codelineno-22-18" name="__codelineno-22-18"></a>git<span class="w"> </span>branch<span class="w"> </span>--all
+</code></pre></div></td></tr></table></div>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Comparez l'état des area dans <code>main</code> et <code>mermaid</code> ?</li>
+<li>Qu'est-ce que vous remarquez sur github quant aux branches créées localement? A quel moment ces branches sont visibles en ligne ?</li>
+</ol>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Précautions avant basculement</p>
+<p>L'exemple précédent prouve que vous ne devriez pas avoir de modifications en cours lors du switch vers une autre branche. Gardez votre branche <code>clean</code> avant de basculer vers une autre.</p>
+</div>
+<p>2) Vous êtes sur la branche <code>mermaid</code>. Créer un nouveau fichier <code>mermaid.md</code> avec ce contenu.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-23-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-23-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-23-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-23-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-23-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-23-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-23-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-23-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-23-10">10</a></span>
+<span class="normal"><a href="#__codelineno-23-11">11</a></span>
+<span class="normal"><a href="#__codelineno-23-12">12</a></span>
+<span class="normal"><a href="#__codelineno-23-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="gh"># Un markdown de ouf!!! avec Mermaid 🤓</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a>Apprendre à faire tout plein de chose comme:
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a>
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a><span class="gu">## Flowchart</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6"></a>
+<a id="__codelineno-23-7" name="__codelineno-23-7"></a><span class="gu">## Sequence diagram</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8"></a>
+<a id="__codelineno-23-9" name="__codelineno-23-9"></a><span class="gu">## Gantt chart</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10"></a>
+<a id="__codelineno-23-11" name="__codelineno-23-11"></a><span class="gu">## Class diagram</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12"></a>
+<a id="__codelineno-23-13" name="__codelineno-23-13"></a><span class="gu">## State diagram</span>
+</code></pre></div></td></tr></table></div>
+<p>3) Faites un commit</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span>
+<span class="normal"><a href="#__codelineno-24-2">2</a></span>
+<span class="normal"><a href="#__codelineno-24-3">3</a></span>
+<span class="normal"><a href="#__codelineno-24-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a>git<span class="w"> </span>add<span class="w"> </span>-A
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Ajout de mermaid.md&quot;</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a>
+<a id="__codelineno-24-4" name="__codelineno-24-4"></a><span class="c1"># Faites `git status` pour vérifier si le répertoire est clean après le commit</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="message-du-dernier-commit">Message du dernier commit<a class="headerlink" href="#message-du-dernier-commit" title="Permanent link">&para;</a></h3>
+<p>4) Modifier le message du commit dernier pour préciser que la page d'acceuil a aussi été mis à jour. </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a>git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Structuration de mon blog et ajout de la page mermaid.md&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>5) Ajouter un lien vers <code>mermaid.md</code> dans le fichier <code>README.md</code> et faites un commit</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-26-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-26-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-26-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-26-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-26-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-26-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-26-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-26-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-26-10">10</a></span>
+<span class="normal"><a href="#__codelineno-26-11">11</a></span>
+<span class="normal"><a href="#__codelineno-26-12">12</a></span>
+<span class="normal"><a href="#__codelineno-26-13">13</a></span>
+<span class="normal"><a href="#__codelineno-26-14">14</a></span>
+<span class="normal"><a href="#__codelineno-26-15">15</a></span>
+<span class="normal"><a href="#__codelineno-26-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a>&lt;pre&gt;
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a> _  _  ____  ____    __    __    ____  _   _    __     
+<a id="__codelineno-26-3" name="__codelineno-26-3"></a>( \/ )(_  <span class="ge">_)(  _</span> \  /__\  (  )  (  _ \( )<span class="ge">_( )  /_</span>_\    
+<a id="__codelineno-26-4" name="__codelineno-26-4"></a> \  /  <span class="ge">_)(_</span>  )(_) )/(__)\  )(__  )___/ ) _ (  /(__)\   
+<a id="__codelineno-26-5" name="__codelineno-26-5"></a>  \/  (____)(____/(__)(__)(____)(__)  (<span class="ge">_) (_</span>)(__)(__)  
+<a id="__codelineno-26-6" name="__codelineno-26-6"></a>
+<a id="__codelineno-26-7" name="__codelineno-26-7"></a>&lt;/pre&gt;
+<a id="__codelineno-26-8" name="__codelineno-26-8"></a>
+<a id="__codelineno-26-9" name="__codelineno-26-9"></a><span class="gh"># Bienvenu sur mon super blog!</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10"></a>
+<a id="__codelineno-26-11" name="__codelineno-26-11"></a><span class="gu">## Mes tutoriels</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12"></a>
+<a id="__codelineno-26-13" name="__codelineno-26-13"></a><span class="hll"><span class="k">1.</span> [<span class="nt">Intégrer des graphes avec mermaid</span>](<span class="na">./mermaid.md</span>)
+</span><a id="__codelineno-26-14" name="__codelineno-26-14"></a><span class="k">2.</span> Mettre en place la documentation d&#39;un projet avec mkdocs
+<a id="__codelineno-26-15" name="__codelineno-26-15"></a>
+<a id="__codelineno-26-16" name="__codelineno-26-16"></a>....
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Lien de README.md vers mermaid.md&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>6) Sur la branche <code>main</code>, ajouter une image (<a href="../../../ressources/UNamur.png">le logo de l'UNamur</a>) dans le fichier <code>README.md</code> et faites un commit.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-28-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-28-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-28-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-28-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-28-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-28-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-28-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-28-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-28-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a>.....
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a>
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a><span class="gu">## Contributeurs</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4"></a>
+<a id="__codelineno-28-5" name="__codelineno-28-5"></a><span class="k">-</span><span class="w"> </span>Moi et moi seul 🤓
+<a id="__codelineno-28-6" name="__codelineno-28-6"></a>
+<a id="__codelineno-28-7" name="__codelineno-28-7"></a><span class="hll">![<span class="nt">Logo</span>](<span class="na">./UNamur.png</span>)
+</span><a id="__codelineno-28-8" name="__codelineno-28-8"></a>
+<a id="__codelineno-28-9" name="__codelineno-28-9"></a>
+<a id="__codelineno-28-10" name="__codelineno-28-10"></a>© &lt; Mon entreprise &gt; Unamur, 2024
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Ajout de l&#39;image de l&#39;université&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>L'historique des commits sur les deux branches se présente comme suit:</p>
+<p><img alt="Graphe des branches" src="../../../img/git_screenshots/local_branche_graph.png" /></p>
+<h3 id="merge-de-branches">Merge de branches<a class="headerlink" href="#merge-de-branches" title="Permanent link">&para;</a></h3>
+<p>La branche <code>mermaid</code> nous a permis de faire développer la page <code>mermaid.md</code>. Elle est maintenant stable. Nous allons la fusionner avec la branche main.</p>
+<p>Pour ce faire positionnez-vous sur la branche <code>main</code> et faites. Réglez les éventuels conflits qui se poseraient</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a>git<span class="w"> </span>merge<span class="w"> </span>mermaid
+</code></pre></div></td></tr></table></div>
+<p><img alt="Fusion de branche" src="../../../img/git_screenshots/local_branch_merge.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Faites un push sur le dépôt distant à partir de la branche <code>main</code>. La branche <code>mermaid</code> est-elle présente sur le dépôt distant ? Sinon comment pouvez-vous envoyer votre branche locale <code>mermaid</code> en ligne afin de permettre aux autres utilisateurs du dépôt de travailler dessus.</li>
+<li>Que fait la commande <code>git cherry-pick</code> ?</li>
+<li>Différence entre <code>git cherry-pick</code> et <code>git merge</code> ?</li>
+</ol>
+</div>
+<!--
+
+1- `git cherry-pick`: 
+    Cette commande permet d'appliquer un commit contenu dans une branche A dans une branche B sans pour autant importer toutes les modifications de la branche A (ce que fait un merge)
+
+
+2- Différence entre `git cherry-pick` et `git merge` ?
+
+`git cherry-pick`: restaure un 
+
+-->
+
+<h3 id="les-tags">Les tags<a class="headerlink" href="#les-tags" title="Permanent link">&para;</a></h3>
+<p>Un tag est un alias (un nom) défini par un développeur dont le rôle est de pointé sur un commit. Les tags sont utilisés pour marquer les <a href="../../../frameworks/git/#le-versioning">numéros de version</a> sur les commits.</p>
+<p>Git supportes deux types de tag:</p>
+<ul>
+<li>Les tags annotés: <code>git tag -a &lt;tagname&gt;</code><br>
+    stockent le nom du tag sur un commit donné</li>
+<li>Les tags légers: <code>git tag &lt;tagname&gt;</code><br>
+    stockent davantage d'informations en conservant également la date de création et le créateur du tag.</li>
+</ul>
+<p>Nous allons ajouter le <code>tag</code> <code>v1.0.0</code> au commit du merge.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span>
+<span class="normal"><a href="#__codelineno-31-3">3</a></span>
+<span class="normal"><a href="#__codelineno-31-4">4</a></span>
+<span class="normal"><a href="#__codelineno-31-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="c1"># Afficher la liste des tags</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a><span class="c1"># git tag --list</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a>
+<a id="__codelineno-31-4" name="__codelineno-31-4"></a><span class="c1"># Ajouter un tag à un commit</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5"></a>git<span class="w"> </span>tag<span class="w"> </span>v1.0.0<span class="w"> </span>&lt;hash_commit&gt;
+</code></pre></div></td></tr></table></div>
+<p><img alt="Ajout de tag" src="../../../img/git_screenshots/local_tag.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Affichez les détails du tag avec la commande <code>git show v1.0.0</code> ?</li>
+<li>Comment pouvons nous envoyer les tags sur le dépôt distant ?</li>
+</ol>
+</div>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span>
+<span class="normal"><a href="#__codelineno-32-2">2</a></span>
+<span class="normal"><a href="#__codelineno-32-3">3</a></span>
+<span class="normal"><a href="#__codelineno-32-4">4</a></span>
+<span class="normal"><a href="#__codelineno-32-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="c1"># Publier tous les tags sur le dépôt distant</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2"></a><span class="c1"># git push origin --tags</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3"></a>
+<a id="__codelineno-32-4" name="__codelineno-32-4"></a><span class="c1"># Publier un tag en particulier</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>v1.0.0
+</code></pre></div></td></tr></table></div>
+<img alt="Push des tag" src="../../../img/git_screenshots/local_push_tag.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Voir dans le dépôt distant si le <code>tag</code> est bien présent ?</li>
+</ol>
+</div>
+<h2 id="vii-faire-du-nettoyage">VII- Faire du nettoyage<a class="headerlink" href="#vii-faire-du-nettoyage" title="Permanent link">&para;</a></h2>
+<p>Dans cette section nous allons apprendre à faire de la maintenance de git.</p>
+<h4 id="git-prune">git prune<a class="headerlink" href="#git-prune" title="Permanent link">&para;</a></h4>
+<p>Pour supprimer les références locales des branches distantes qui n'existent plus sur le dépôt distant.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Voici comment fonctionne <code>git remote prune</code> :</p>
+<ol>
+<li>Il contacte le dépôt distant spécifié par le nom (par exemple, <code>origin</code>) et récupère la liste des branches disponibles.</li>
+<li>Il compare la liste des branches distantes avec la liste des branches locales sur votre ordinateur.</li>
+<li>Pour chaque branche distante qui n'existe plus sur le dépôt distant, <code>git remote prune</code> la supprime de votre liste de branches locales.</li>
+</ol>
+</div>
+<p><img alt="Faire du nettoyage" src="../../../img/git_screenshots/local_remote_prune.png" /></p>
+<h4 id="git-garbage-collection">Git garbage collection<a class="headerlink" href="#git-garbage-collection" title="Permanent link">&para;</a></h4>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><code>git gc</code> est utilisée pour récupérer de l'espace disque et améliorer les performances de votre dépôt Git. Elle fonctionne en supprimant les objets inutiles de votre dépôt local, tels que :</p>
+<ul>
+<li><strong>Objets non compressés:</strong> Ce sont des fichiers individuels qui stockent le contenu des objets Git (blobs, arbres, commits, etc.) avant qu'ils ne soient compressés dans des fichiers compressés.</li>
+<li><strong>Chaînes de deltas packagés:</strong> Ce sont des chaînes de deltas (différences) entre les révisions Git qui sont utilisées pour stocker les objets plus efficacement dans les fichiers packagés.</li>
+<li><strong>Objets inaccessibles:</strong> Ce sont des objets qui ne sont plus référencés par aucun autre objet de votre dépôt et qui peuvent être supprimés en toute sécurité.</li>
+</ul>
+</div>
+<p><img alt="Faire du nettoyage" src="../../../img/git_screenshots/local_git_gc.png" /></p>
+<h2 id="viii-collaboration">VIII- Collaboration<a class="headerlink" href="#viii-collaboration" title="Permanent link">&para;</a></h2>
+<h3 id="issues">Issues<a class="headerlink" href="#issues" title="Permanent link">&para;</a></h3>
+<p>Sur le dépôt distant, créer un <code>issue</code> (problème).</p>
+<p><img alt="Remote issue" src="../../../img/git_screenshots/remote_issue1.png" /></p>
+<p><img alt="Remote issue" src="../../../img/git_screenshots/remote_issue2.png" /></p>
+<p><img alt="Remote issue" src="../../../img/git_screenshots/remote_issue_open.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Comment faire un commit pour satisfaire cet <code>issue</code> ? Astuce ( Closes #1)</p>
+</div>
+<p><img alt="Remote issue" src="../../../img/git_screenshots/remote_issue_closed.png" /></p>
+<h3 id="fork">Fork<a class="headerlink" href="#fork" title="Permanent link">&para;</a></h3>
+<p>Un <code>fork</code> est une copie d'un dépôt. La création d'un <code>fork</code> vous permet d'expérimenter librement des modifications sans affecter le projet d'origine.</p>
+<p>Un fork vous permet de :</p>
+<ul>
+<li>Travailler sur une version indépendante du code source d'un projet.</li>
+<li>Proposer des modifications au projet original. Vous ne pouvez pas modifier directement le code du dépôt original. Vous devez créer une <code>pull request</code></li>
+<li>Collaborer avec d'autres utilisateurs sur le code.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Il est important de noter que les forks ne sont pas des copies permanentes du dépôt original.</p>
+</div>
+<p><strong>Exercice</strong></p>
+<p>Faire le fork du <a href="https://github.com/mermaid-js/mermaid" target="_blank">projet mermaid</a></p>
+<h4 id="avant-un-fork">Avant un fork<a class="headerlink" href="#avant-un-fork" title="Permanent link">&para;</a></h4>
+<p><img alt="Avant un fork" src="../../../img/git_screenshots/remote_before_fork1.png" /></p>
+<p><img alt="Avant un fork" src="../../../img/git_screenshots/remote_before_fork2.png" /></p>
+<h4 id="apres-un-fork">Après un fork<a class="headerlink" href="#apres-un-fork" title="Permanent link">&para;</a></h4>
+<p><img alt="Après un fork" src="../../../img/git_screenshots/remote_after_fork.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Quelle est la visibilité d'un fork par défaut ? (privé ou public) ?</li>
+<li>Si le propriétaire du dépôt original supprime son dépôt, qu'en sera t-il des forks ?</li>
+</ol>
+</div>
+<h3 id="pull-request-pr">Pull Request (PR)<a class="headerlink" href="#pull-request-pr" title="Permanent link">&para;</a></h3>
+<p>Une <code>pull request (PR)</code>, ou <code>demande de tirage</code> en français, est un moyen de proposer des modifications à un dépôt Git distant. Elle permet de soumettre vos changements à un responsable de projet pour qu'il les examine et les intègre dans le code principal.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>📄 <a href="https://docs.github.com/fr/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request" target="_blank">Créer un pull request</a></p>
+<p>📄 <a href="https://docs.github.com/fr/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork`" target="_blank">Créer un pull request à partir d'un <code>Fork</code></a></p>
+<p><span class="twemoji youtube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg></span> <a href="https://www.youtube.com/watch?v=jRLGobWwA3Y" target="_blank">Short video</a></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice</p>
+<p><a href="https://github.com/skills/review-pull-requests" target="_blank">S'exercer avec les <code>pull requests</code> ...</a></p>
+</div>
+<p><strong>Zone d'approbation d'une pull request</strong></p>
+<p><img alt="Zone d'approbabtion d'une pull request" src="../../../img/git_screenshots/remote_pull_request_approbation.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>Commentez les zones mis en évidence ?</li>
+<li>Quelles sont les commandes internes effectuées par un <code>merge commit</code> lors d'un <code>pull request</code> ?</li>
+</ol>
+</div>
+<!--
+Quelles sont les commandes internes effectuées par un `merge commit` lors d'un `pull request` ?
+
+- git fetch :Cette commande récupère les dernières modifications du dépôt distant.
+
+- git checkout: Cette commande change la branche active vers la branche principale du dépôt local.
+
+- git merge (résolution des conflits de fusion si nécessaire): Cette commande fusionne la branche de la pull request dans la branche principale.
+
+- git add
+- git commit
+- git push
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 <a href="#"  rel="noopener">Université de Namur, Belgique</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dd8806f2.min.js"></script>
+      
+    
+  </body>
+</html>

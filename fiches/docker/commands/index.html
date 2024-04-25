@@ -1,0 +1,3631 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://VincentEnglebert.github.io/web/fiches/docker/commands/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../../frameworks/javascript/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.19">
+    
+    
+      
+        <title>Prise en main de docker 😎 - TP et Ressources web utiles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tp-docker" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="TP et Ressources web utiles" class="md-header__button md-logo" aria-label="TP et Ressources web utiles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TP et Ressources web utiles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Prise en main de docker 😎
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../infob318/" class="md-tabs__link">
+          
+  
+    
+  
+  INFOB318
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ialtem/poo/" class="md-tabs__link">
+          
+  
+    
+  
+  IALTEM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../labil/" class="md-tabs__link">
+          
+  
+    
+  
+  LABIL
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../mde/" class="md-tabs__link">
+          
+  
+    
+  
+  MDE
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../bagi/" class="md-tabs__link">
+        
+  
+    
+  
+  BAGI
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../frameworks/" class="md-tabs__link">
+          
+  
+    
+  
+  Frameworks et technologies
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="TP et Ressources web utiles" class="md-nav__button md-logo" aria-label="TP et Ressources web utiles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    TP et Ressources web utiles
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../infob318/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    INFOB318
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            INFOB318
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    IALTEM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            IALTEM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ialtem/poo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    POO avancée
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ialtem/solid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SOLID principles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ialtem/patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ialtem/couplage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Couplage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ialtem/threads/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Threads
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ialtem/styles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architectural patterns and styles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ialtem/scenario/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Non Fonctional Properties
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            TP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../thread/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Threads
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8_1" id="__nav_3_8_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            Threads
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thread/qcm_exercices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QCM et exercices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thread/philosophes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Philosophes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thread/lecteurs_redacteurs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecteurs/Rédacteurs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thread/producteurs_consommateurs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Producteurs/Consommateurs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thread/tower_bridge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tower bridge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thread/workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thread/petri/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Petri Net
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../labil/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    LABIL
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            LABIL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../mde/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    MDE
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            MDE
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bagi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BAGI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../frameworks/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Frameworks et technologies
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Frameworks et technologies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../frameworks/aop/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    AOP & AspectJ
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            AOP & AspectJ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../aop/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    TP
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_2_2" id="__nav_7_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            TP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aop/tp_transaction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des transactions 😎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../frameworks/docker/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Docker
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Docker
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    TP
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_3_2" id="__nav_7_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            TP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Prise en main de docker 😎
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Prise en main de docker 😎
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Desktop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-recuperer-une-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      I- Récupérer une image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-manipuler-des-conteneurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      II- Manipuler des conteneurs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="II- Manipuler des conteneurs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#format-des-commandes-de-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format des commandes de docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lancer-un-conteneur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lancer un conteneur
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voir-les-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voir les logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supprimer-un-conteneur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supprimer un conteneur
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renommer-un-conteneur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Renommer un conteneur
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#se-connecter-a-un-conteneur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Se connecter à un conteneur
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspecter-un-conteneur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspecter un conteneur
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#communication-entre-conteneurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Communication entre conteneurs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Communication entre conteneurs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#premiere-approche-bridge-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Première approche (bridge network)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deuxieme-approche-host-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deuxième approche (host network)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troisieme-approche-custom-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troisième approche (custom network)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-automatiser-les-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      III- Automatiser les services
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-persister-les-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV- Persister les données
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-construire-une-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      V- Construire une image
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="V- Construire une image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      .dockerignore
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-publier-une-image-sur-le-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      VI- Publier une image sur le hub
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vii-nettoyer-les-ressources-orphelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      VII- Nettoyer les ressources orphelines
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/javascript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frameworks Javascript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frameworks python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../frameworks/git/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../git/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    TPs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_6_2" id="__nav_7_6_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            TPs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prise en main de git 😎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/git_actions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Actions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/cicd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/bugs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chasse aux bugs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/hooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Hooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../frameworks/groovy/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Groovy
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7">
+            <span class="md-nav__icon md-icon"></span>
+            Groovy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    IDE
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_8">
+            <span class="md-nav__icon md-icon"></span>
+            IDE
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/ide/intellij/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intellij IDEA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/ide/eclipse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eclipse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/javafx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JavaFX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/osgi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSGi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/scrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCRUM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_12" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../frameworks/spring/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Spring
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_12" id="__nav_7_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_12">
+            <span class="md-nav__icon md-icon"></span>
+            Spring
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concepts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/spring_boot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring boot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Structure d'un projet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/dev_tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dev Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/db_confs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration des DB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/persistence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Couche de persistence
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/spring_aop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring AOP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/securite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Securité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/audit_logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audit and Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/junit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Junit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/jms_activemq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JMS ActiveMQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../frameworks/spring/serveurs_tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Servers and build tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_12_14" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../spring/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    TPs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_12_14" id="__nav_7_12_14_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_12_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_12_14">
+            <span class="md-nav__icon md-icon"></span>
+            TPs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring/injection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Injection de dépendance 😎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring/spring_config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring/rest_bootstrap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    REST Bootstrap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spring/frontend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frontend framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Desktop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-recuperer-une-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      I- Récupérer une image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-manipuler-des-conteneurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      II- Manipuler des conteneurs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="II- Manipuler des conteneurs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#format-des-commandes-de-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format des commandes de docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lancer-un-conteneur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lancer un conteneur
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voir-les-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voir les logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supprimer-un-conteneur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supprimer un conteneur
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renommer-un-conteneur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Renommer un conteneur
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#se-connecter-a-un-conteneur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Se connecter à un conteneur
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspecter-un-conteneur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspecter un conteneur
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#communication-entre-conteneurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Communication entre conteneurs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Communication entre conteneurs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#premiere-approche-bridge-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Première approche (bridge network)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deuxieme-approche-host-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deuxième approche (host network)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troisieme-approche-custom-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troisième approche (custom network)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-automatiser-les-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      III- Automatiser les services
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-persister-les-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV- Persister les données
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-construire-une-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      V- Construire une image
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="V- Construire une image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      .dockerignore
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-publier-une-image-sur-le-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      VI- Publier une image sur le hub
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vii-nettoyer-les-ressources-orphelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      VII- Nettoyer les ressources orphelines
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="tp-docker">TP Docker<a class="headerlink" href="#tp-docker" title="Permanent link">&para;</a></h1>
+<p><strong>Objectif</strong></p>
+<p>A la fin de cette section, tu seras capable de déployer un site wordpress basé sur la technologie docker.</p>
+<p><strong>Contenu</strong></p>
+<p><a href="#installation">Installation</a> <br>
+<a href="#docker-desktop">Docker Desktop</a> <br>
+<a href="#i-recuperer-une-image">I- Récupérer une image</a> <br>
+<a href="#ii-manipuler-des-conteneurs">II- Manipuler des conteneurs</a> <br>
+<a href="#iii-automatiser-les-services">III- Automatiser les services</a> <br>
+<a href="#iv-persister-les-donnees">IV- Persister les données</a> <br>
+<a href="#v-construire-une-image">V- Contruire une image</a> <br>
+<a href="#vi-publier-une-image-sur-le-hub">VI- Publier une image sur le Hub</a> <br>
+<a href="#vii-nettoyer-les-ressources-orphelines">VII- Nettoyer les ressources orphelines</a> <br></p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Au cours de l'installation de docker, vous aviez dû (pour ceux qui sont sur Windows) permettre l'utilisation du client <code>Hyper-V</code> en activant la <code>virtualisation dans le BIOS</code> ou vous aviez dû installer <code>WSL (Windows Subsystem for Linux)</code>. Quel en est l'utilité ?</li>
+<li>Que savez-vous de <code>docker engine</code> et de <code>docker deamon</code> ?</li>
+<li>Quelle est la version de <code>docker</code> installé ?</li>
+<li>Quelle est la version de <code>Docker Compose</code> installé ?</li>
+</ol>
+</div>
+<h2 id="docker-desktop">Docker Desktop<a class="headerlink" href="#docker-desktop" title="Permanent link">&para;</a></h2>
+<p><img alt="Docker Desktop" src="../../../img/docker/docker_desktop.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Lancez votre premier conteneur comme sur l'image. Quelles difficultés rencontrez-vous?</li>
+<li>Commentez les zones mis en évidence ?</li>
+<li>Quel est le nom du conteneur ?</li>
+<li>Que signifie les ports <code>8088:80</code>?</li>
+</ol>
+</div>
+<p>Dans la suite du TP, nous allons essayer de lancer un site web wordpress dans un conteneur docker et en faire un sauvegarde sur notre hub. Pour y arriver, voici les grands axes du TP:</p>
+<blockquote>
+<p>1) Récupérer une image de wordpress sur docker-hub</p>
+<p>2) Installer la base de données et faire communiquer les conteneurs</p>
+<p>3) Automatiser le démarrage et l'extinction des services avec Docker Compose</p>
+<p>4) Créer son propre image et l'envoyer sur le hub</p>
+</blockquote>
+<h2 id="i-recuperer-une-image">I- Récupérer une image<a class="headerlink" href="#i-recuperer-une-image" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>1) Récupérer une image de wordpress sur docker-hub</p>
+</blockquote>
+<p>Dans cette section, nous allons récupérer une image de wordpress sur docker-hub. Allez sur docker-hub, et rechercher <code>wordpress</code></p>
+<p><img alt="Docker Desktop" src="../../../img/docker/dockerhub_search.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Commentez les zones mis en évidence ?</li>
+<li>Quelle est la commande pour récupérer l'image de wordpress ? Astuce (Aller dans le détail de l'image choisie)</li>
+</ol>
+</div>
+<p><img alt="Docker hub search" src="../../../img/docker/dockerhub_search_details.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Pouvez-vous commenter les différentes zones de ce résultat ?</li>
+<li>Quelle est la version actuelle de wordpress ? Est-ce qu'il existe une image de docker dans cette version ?</li>
+<li>Que veut dire <code>alpine</code> ?</li>
+</ol>
+</div>
+<p>Dans la section suivante nous allons lancer un conteneur basé sur <code>wordpress</code></p>
+<h2 id="ii-manipuler-des-conteneurs">II- Manipuler des conteneurs<a class="headerlink" href="#ii-manipuler-des-conteneurs" title="Permanent link">&para;</a></h2>
+<h3 id="format-des-commandes-de-docker">Format des commandes de docker<a class="headerlink" href="#format-des-commandes-de-docker" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Ancienne (Travaille toujours)</p>
+<blockquote>
+<p>docker &lt; command &gt; [option] 
+    exemple : docker run --publish</p>
+</blockquote>
+</li>
+<li>
+<p>Nouvelle</p>
+<blockquote>
+<p>docker &lt; command &gt; &lt; sub-command &gt; [option]<br />
+    exemple : docker container stop --publish</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="lancer-un-conteneur">Lancer un conteneur<a class="headerlink" href="#lancer-un-conteneur" title="Permanent link">&para;</a></h3>
+<p><img alt="Lancement d'un conteneur wordpres 1" src="../../../img/docker/run_sans_port.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Décrivez les composantes de la commande ci-dessus ?</li>
+</ol>
+</div>
+<p>Exécutez la commande suivante :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>some-wordpress<span class="w"> </span>--network<span class="w"> </span>some-network<span class="w"> </span>-d<span class="w"> </span>wordpress
+</code></pre></div>
+<p><img alt="Lancement d'un conteneur wordpres 2" src="../../../img/docker/docker_run_first1.png" /></p>
+<p><img alt="Lancement d'un conteneur wordpres 3" src="../../../img/docker/docker_run_first2.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Expliquez les parties mises en évidence ?</li>
+<li>Pourquoi la commande a t-elle échouée ?</li>
+</ol>
+</div>
+<p>Exécutons plutôt cette commande sans l'option <code>--network</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>some-wordpress<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:80<span class="w"> </span>-d<span class="w"> </span>wordpress
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Pour quelle raison cette commande ne fonctionne-t-elle pas non plus ?</li>
+<li>Constatez la présence du conteneur dans <code>docker desktop</code>. Quel est son état ?</li>
+</ol>
+</div>
+<p>Lancez le conteneur avec un autre nom:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>my-wordpress<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:80<span class="w"> </span>-d<span class="w"> </span>wordpress
+</code></pre></div>
+<p><img alt="Docker run" src="../../../img/docker/docker_run_success.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Que signifie l'identifiant mis en évidence ?</li>
+<li>L'<code>image docker</code> a t-elle été téléchargée à nouveau ?</li>
+</ol>
+</div>
+<p>Vérifiez la disponibilité du site à l'adresse <a href="http://127.0.0.1:8080" target="_blank"><code>http://127.0.0.1:8080</code></a>.</p>
+<h3 id="voir-les-logs">Voir les logs<a class="headerlink" href="#voir-les-logs" title="Permanent link">&para;</a></h3>
+<p>Sur <code>docker desktop</code>, voir les logs du conteneur <code>my-wordpress</code></p>
+<p>Les logs d'un conteneur peuvent aussi être consultés avec la commande:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>container<span class="w"> </span>logs<span class="w"> </span>my-wordpress
+</code></pre></div>
+<h3 id="supprimer-un-conteneur">Supprimer un conteneur<a class="headerlink" href="#supprimer-un-conteneur" title="Permanent link">&para;</a></h3>
+<p>Supprimer le conteneur qui ne fonctionne pas dans <code>docker desktop</code>.</p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Quelle est la commande exécutée en arrière plan ?</li>
+<li>Les volumes associées aux conteneurs sont-elles persistées ?</li>
+</ol>
+</div>
+<p>Cela nous obligera à faire quelques réajustements. En effet, un conteneur de base de données, ne doit pas perdre ses données à chaque suppression.</p>
+<h3 id="renommer-un-conteneur">Renommer un conteneur<a class="headerlink" href="#renommer-un-conteneur" title="Permanent link">&para;</a></h3>
+<p>Dans cette partie, nous allons renommer le conteneur <code>my-wordpress</code> en <code>my-site</code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Avant d'exécuter la commande suivante, gardez en mémoire l'identifiant du conteneur.</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>container<span class="w"> </span>rename<span class="w"> </span>my-wordpress<span class="w"> </span>my-site
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<p>Est ce que l'identifiant du conteneur renommé, a changé ?</p>
+</div>
+<h3 id="se-connecter-a-un-conteneur">Se connecter à un conteneur<a class="headerlink" href="#se-connecter-a-un-conteneur" title="Permanent link">&para;</a></h3>
+<p><strong>Utilisation de <code>docker desktop</code></strong></p>
+<p><img alt="DOcker exec dans docker desktop 1" src="../../../img/docker/docker_exec1.png" /></p>
+<p><img alt="DOcker exec dans docker desktop 2" src="../../../img/docker/docker_exec2.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Tapez la commande <code>bash</code> après connection afin d'utiliser le <code>Bourne-Again shell (bash)</code> au lieu de <code>Bourne Shell (sh)</code></p>
+</div>
+<p><strong>En ligne de commande</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>container<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>my-site<span class="w"> </span>bash
+</code></pre></div>
+<p>Installer le package <code>ascii</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>ascii
+</code></pre></div>
+<h3 id="inspecter-un-conteneur">Inspecter un conteneur<a class="headerlink" href="#inspecter-un-conteneur" title="Permanent link">&para;</a></h3>
+<p>Utilisez <code>docker desktop</code> pour inspecter. Nous pouvons voir que le conteneur à des paramètres réseaux.</p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Quelle est l'<code>adresse ip</code> du conteneur et quel est le <code>network</code> par défaut ? Astuce (ce réseau est encore appelé <code>docker0</code>)</li>
+<li>Quels sont les drivers qu'offre docker pour gérer un réseau de conteneurs ? Astuce (<a href="https://docs.docker.com/network/#drivers" target="_blank">Documentation officielle</a>)</li>
+<li>Sur votre machine, identifiez la carte réseau virtuelle créée par docker pour gérer le trafic des conteneurs ? Astuce (<code>ipconfig</code> sous windows)</li>
+</ol>
+</div>
+<p>La commande suivante permet d'afficher la liste des réseaux disponibles :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>docker<span class="w"> </span>network<span class="w"> </span>ls
+</code></pre></div>
+<h3 id="communication-entre-conteneurs">Communication entre conteneurs<a class="headerlink" href="#communication-entre-conteneurs" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Legacy</p>
+<p>L'utilisation de l'option <code>--link</code> pour lier les conteneurs est obsolète.</p>
+</div>
+<blockquote>
+<p>2) Installer la base de données et faire communiquer les conteneurs</p>
+</blockquote>
+<p>La base de données n'étant pas encore disponible, nous ne pourrions pas poursuivre notre installation.</p>
+<p><img alt="Installation wordpress" src="../../../img/docker/wordpress_bd.png" /></p>
+<p>Nous allons devoir lancer un conteneur de base de données. Pour cela effectuer les tâches suivantes:</p>
+<h4 id="premiere-approche-bridge-network">Première approche (bridge network)<a class="headerlink" href="#premiere-approche-bridge-network" title="Permanent link">&para;</a></h4>
+<p>La communication entre les conteneurs se fera depuis l'extérieur. Les deux conteneurs étant exposés sur des ports externes <code>8000</code> pour <code>wordpress</code> et <code>3306</code> pour <code>mysql</code></p>
+<p><strong>A faire :</strong></p>
+<ul>
+<li>Lancer un conteneur de base de données avec l'image <code>mysql:8.3.0</code> en faisant attention à la documentation et aux ports à exposer. Dans notre cas, le port par défaut de <code>mysql</code> est <code>3306</code> et il doit être exposé à l'extérieur sur le même port. Vous pouvez définir votre mot de passe. Pour faire simple, je garderai <code>admin</code>.</li>
+</ul>
+<!--
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>db<span class="w"> </span>-p<span class="w"> </span><span class="m">3306</span>:3306<span class="w"> </span>-e<span class="w"> </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>admin<span class="w"> </span>-d<span class="w"> </span>mysql:8.3.0
+</code></pre></div>
+-->
+
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Dans quel cas le lancement du conteur échouera, au regard des ports ?</li>
+</ol>
+</div>
+<!--
+2- Echec si une application tourne déjà sur le port demandé par le conteneur.
+-->
+
+<ul>
+<li>Créer la base de données <code>mysite</code> en ligne de commande. C'est elle que nous utiliserons pour notre site.</li>
+</ul>
+<p><img alt="Création d'une base de données" src="../../../img/docker/mysql_create_db.png" /></p>
+<ul>
+<li>Continuer et achever l'installation en ajoutant les paramètres de connexion au conteneur de base de données.</li>
+</ul>
+<p><img alt="Configuration de la base de données 1" src="../../../img/docker/wp_config_1.png" /></p>
+<p><img alt="Configuration de la base de données 2" src="../../../img/docker/wp_config_2.png" /></p>
+<p><img alt="Finalisation de l'installation" src="../../../img/docker/wp_install_success.png" /></p>
+<h4 id="deuxieme-approche-host-network">Deuxième approche (host network)<a class="headerlink" href="#deuxieme-approche-host-network" title="Permanent link">&para;</a></h4>
+<p><strong>Caractéristiques</strong></p>
+<ul>
+<li>Pas d'isolation réseau entre le conteneur et l'hôte</li>
+<li>Pas besoin d'ip pour le conteneur</li>
+<li>Les conteneurs communiquent entre eux et avec l'<code>hôte</code> mais ne sont pas accessible depuis l'extérieur.</li>
+<li>Les conteneurs se comportent comme des processus de l'<code>hôte</code>.</li>
+</ul>
+<p>Mettons tout cela en évidence :</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>db<span class="w"> </span>--publish<span class="w"> </span><span class="m">3306</span>:3306<span class="w"> </span>--network<span class="w"> </span>host<span class="w"> </span>-e<span class="w"> </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>admin<span class="w"> </span>-d<span class="w"> </span>mysql:8.3.0
+</code></pre></div>
+<img alt="Finalisation de l'installation" src="../../../img/docker/network_host_db.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Quelle compréhension avez-vous du <code>warning</code> dans la capture ?</li>
+</ol>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Attention</p>
+<p>Vous auriez besoin de recréer la base de données car elle n'est pas persistée. C'est à dire elle a été perdue à la destruction du conteneur.</p>
+</div>
+<p>Ensuite ...</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Créer le conteneur de wordpress et le connecter au réseau `host`</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>my-site<span class="w"> </span>--network<span class="w"> </span>host<span class="w"> </span>-d<span class="w"> </span>wordpress
+</code></pre></div>
+<p>Connectez vous au conteneur et exécuter la commande suivante:</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>curl<span class="w"> </span>-v<span class="w"> </span>http://localhost
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="c1"># Voir la liste des ports ouverts</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>netstat<span class="w"> </span>-lutpn
+</code></pre></div></td></tr></table></div>
+<img alt="Connexion entre les conteneurs Ok" src="../../../img/docker/network_host_curl.png" /></p>
+<p>Les conteneurs communiquent bien entre eux. Quid de la visibilité depuis l'extérieur ?</p>
+<p>Sur votre machine, exécuter les commandes suivantes. </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="c1"># Sur windows</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>netstat<span class="w"> </span>-ano<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;3306\|80&quot;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="c1"># Sur linux ou macOS</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>netstat<span class="w"> </span>-lutpn<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;3306\|80&quot;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<p>Que constatez-vous ?</p>
+</div>
+<p>La première approche avec <code>bridge</code> nous semble la plus appropriée pour ce cas d'exemple. Mais nous pouvons encore faire mieux en proposant une architecture notre site web est bien accessible depuis l'extérieur et fonctionnelle mais pas notre base de données.</p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<p>Pouvez-vous dessiner une telle architecture ?</p>
+</div>
+<h4 id="troisieme-approche-custom-network">Troisième approche (custom network)<a class="headerlink" href="#troisieme-approche-custom-network" title="Permanent link">&para;</a></h4>
+<p>Nous allons exécuter les commandes suivantes après avoir détruit les conteneurs</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="c1"># Créer notre réseau personnalisé</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>--driver<span class="o">=</span>bridge<span class="w"> </span>ntw
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="c1"># Lancer ma base de données sans la publier. </span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="c1"># C&#39;est à dire enlever l&#39;option `-p|--publish`</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>db<span class="w"> </span>--network<span class="w"> </span>ntw<span class="w"> </span>-e<span class="w"> </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>admin<span class="w"> </span>-d<span class="w"> </span>mysql:8.3.0
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="c1"># Recréer la base de données mysite</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="c1"># bash-4.4# mysql -uroot -p</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="c1"># mysql&gt; create database mysite;</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a>
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="c1"># Lancer le conteneur `wordpress` en l&#39;exposant à l&#39;extérieur</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>my-site<span class="w"> </span>--network<span class="w"> </span>ntw<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:80<span class="w"> </span>-d<span class="w"> </span>wordpress
+</code></pre></div></td></tr></table></div>
+<p>Après ces commandes, lancer le lien <a href="http://localhost:8080" target="_blank"><code>http://localhost:8080</code></a>. Vous devriez aboutir à une telle interface. Mettez <code>db</code> dans le champ <code>Database Host</code></p>
+<p><img alt="Resolution DNS" src="../../../img/docker/network_custom.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>D'où vient <code>db</code> ?</li>
+<li>Quelle fonctionnalité de docker a été mis en évidence ? Astuce (<a href="https://medium.com/@prajwal.chin/understanding-docker-dns-2ed4b070a0" target="_blank">Plus de détails...</a>)</li>
+</ol>
+</div>
+<p>Tout fonctionne maintenant à merveille. Mais nous pouvons automatiser le démarrage et l'extinction de nos services avec <code>Docker Compose</code>. Rien de plus simple 😜</p>
+<blockquote>
+<p>3) Automatiser le démarrage et l'extinction des services avec <code>Docker Compose</code></p>
+</blockquote>
+<h2 id="iii-automatiser-les-services">III- Automatiser les services<a class="headerlink" href="#iii-automatiser-les-services" title="Permanent link">&para;</a></h2>
+<p>Créons un répertoire pour notre projet et créons un fichier particulier <code>docker-compose.yml</code>. </p>
+<p>Bien sûr vous pouvez utiliser un autre nom pour le fichier mais il faudra le spécifier à docker. Nous ferons simple pour l'instant. </p>
+<p>Ce fichier doit se trouver à la racine de votre projet.</p>
+<p>Voici un exemple de contenu.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span>
+<span class="normal"><a href="#__codelineno-14-13">13</a></span>
+<span class="normal"><a href="#__codelineno-14-14">14</a></span>
+<span class="normal"><a href="#__codelineno-14-15">15</a></span>
+<span class="normal"><a href="#__codelineno-14-16">16</a></span>
+<span class="normal"><a href="#__codelineno-14-17">17</a></span>
+<span class="normal"><a href="#__codelineno-14-18">18</a></span>
+<span class="normal"><a href="#__codelineno-14-19">19</a></span>
+<span class="normal"><a href="#__codelineno-14-20">20</a></span>
+<span class="normal"><a href="#__codelineno-14-21">21</a></span>
+<span class="normal"><a href="#__codelineno-14-22">22</a></span>
+<span class="normal"><a href="#__codelineno-14-23">23</a></span>
+<span class="normal"><a href="#__codelineno-14-24">24</a></span>
+<span class="normal"><a href="#__codelineno-14-25">25</a></span>
+<span class="normal"><a href="#__codelineno-14-26">26</a></span>
+<span class="normal"><a href="#__codelineno-14-27">27</a></span>
+<span class="normal"><a href="#__codelineno-14-28">28</a></span>
+<span class="normal"><a href="#__codelineno-14-29">29</a></span>
+<span class="normal"><a href="#__codelineno-14-30">30</a></span>
+<span class="normal"><a href="#__codelineno-14-31">31</a></span>
+<span class="normal"><a href="#__codelineno-14-32">32</a></span>
+<span class="normal"><a href="#__codelineno-14-33">33</a></span>
+<span class="normal"><a href="#__codelineno-14-34">34</a></span>
+<span class="normal"><a href="#__codelineno-14-35">35</a></span>
+<span class="normal"><a href="#__codelineno-14-36">36</a></span>
+<span class="normal"><a href="#__codelineno-14-37">37</a></span>
+<span class="normal"><a href="#__codelineno-14-38">38</a></span>
+<span class="normal"><a href="#__codelineno-14-39">39</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="hll">version: &#39;3.3&#39;
+</span><a id="__codelineno-14-2" name="__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>services:
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>  wordpress:
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="hll">    container_name: apache-wp
+</span><a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="hll">    image: wordpress:latest
+</span><a id="__codelineno-14-8" name="__codelineno-14-8"></a>    restart: always
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="hll">    ports:
+</span><a id="__codelineno-14-10" name="__codelineno-14-10"></a>      - 8080:80
+<a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="hll">    environment:
+</span><a id="__codelineno-14-12" name="__codelineno-14-12"></a>      WORDPRESS_DB_HOST: db
+<a id="__codelineno-14-13" name="__codelineno-14-13"></a>      WORDPRESS_DB_USER: root
+<a id="__codelineno-14-14" name="__codelineno-14-14"></a>      WORDPRESS_DB_PASSWORD: admin
+<a id="__codelineno-14-15" name="__codelineno-14-15"></a>      WORDPRESS_DB_NAME: mysite
+<a id="__codelineno-14-16" name="__codelineno-14-16"></a><span class="hll">    volumes:
+</span><a id="__codelineno-14-17" name="__codelineno-14-17"></a>      - wp_data:/var/www/html
+<a id="__codelineno-14-18" name="__codelineno-14-18"></a><span class="hll">    depends_on:
+</span><a id="__codelineno-14-19" name="__codelineno-14-19"></a>      - db
+<a id="__codelineno-14-20" name="__codelineno-14-20"></a>    networks:
+<a id="__codelineno-14-21" name="__codelineno-14-21"></a>      - ntw
+<a id="__codelineno-14-22" name="__codelineno-14-22"></a>
+<a id="__codelineno-14-23" name="__codelineno-14-23"></a>  db:
+<a id="__codelineno-14-24" name="__codelineno-14-24"></a>    container_name: mysql-db
+<a id="__codelineno-14-25" name="__codelineno-14-25"></a>    image: mysql:8.3.0
+<a id="__codelineno-14-26" name="__codelineno-14-26"></a>    restart: always
+<a id="__codelineno-14-27" name="__codelineno-14-27"></a>    environment:
+<a id="__codelineno-14-28" name="__codelineno-14-28"></a>      MYSQL_ROOT_PASSWORD: admin
+<a id="__codelineno-14-29" name="__codelineno-14-29"></a>    volumes:
+<a id="__codelineno-14-30" name="__codelineno-14-30"></a>      - db_data:/var/lib/mysql
+<a id="__codelineno-14-31" name="__codelineno-14-31"></a>    networks:
+<a id="__codelineno-14-32" name="__codelineno-14-32"></a>      - ntw
+<a id="__codelineno-14-33" name="__codelineno-14-33"></a>
+<a id="__codelineno-14-34" name="__codelineno-14-34"></a><span class="hll">networks:
+</span><a id="__codelineno-14-35" name="__codelineno-14-35"></a>  ntw:
+<a id="__codelineno-14-36" name="__codelineno-14-36"></a>
+<a id="__codelineno-14-37" name="__codelineno-14-37"></a><span class="hll">volumes:
+</span><a id="__codelineno-14-38" name="__codelineno-14-38"></a>  wp_data:
+<a id="__codelineno-14-39" name="__codelineno-14-39"></a>  db_data:
+</code></pre></div></td></tr></table></div>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>Que veut dire <code>wordpress:latest</code> et quel inconvénient il y a t-il à utiliser le tag <code>latest</code> ?</li>
+<li>Quelles sont les autres utilisations des volumes ?</li>
+</ol>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Legacy</p>
+<p>Dans les versions récentes de <code>Docker Compose</code>, la commande est en deux mots <code>docker compose ...</code> et non <del><code>docker-compose ...</code></del></p>
+</div>
+<p>En ligne de commande, exécuter la commande suivante pour lancer les conteneurs:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Contruire et lancer vos services</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># Se base sur le fichier `docker-compose.yml` positionné dans</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># le répertoire à partir duquel la commande est exécutée.</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># -p|--project-name: pour mettre un prefixe aux ressources </span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># générées sinon `Docker Compose` gardera le nom du docker comme étant le préfixe</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>docker<span class="w"> </span>compose<span class="w"> </span>-p<span class="w"> </span>mysite<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<p><img alt="Docker compose up" src="../../../img/docker/docker_compose_up.png" /></p>
+<p>Les volumes créés sont visibles dans <code>Docker desktop</code></p>
+<p><img alt="Containers volumes" src="../../../img/docker/docker_volume.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Docker Compose: commandes utiles</p>
+<ol>
+<li>
+<p><code>docker compose up -d</code>: démarrer l'ensemble des services en arrière-plan;</p>
+</li>
+<li>
+<p><code>docker compose ps</code>: voir le statut de l'ensemble de vos services;</p>
+</li>
+<li>
+<p><code>docker-compose stop</code>: arrêter l'ensemble des services;</p>
+</li>
+<li>
+<p><code>docker-compose down</code>: détruire l'ensemble des ressources;</p>
+</li>
+<li>
+<p><code>docker-compose config</code>: valider la syntaxe de votre fichier docker-compose.yml</p>
+</li>
+</ol>
+</div>
+<p><a href="https://docs.docker.com/compose/compose-file/" target="_blank">Aller plus loin</a></p>
+<div class="admonition danger">
+<p class="admonition-title">Finalisez l'installation de wordpress</p>
+<p>Je sais que nous avions installer plus de mille fois la même application mais promis, ce sera la dernière 😅. Vous pouvez vous en rassurer avec la section suivante.</p>
+</div>
+<h2 id="iv-persister-les-donnees">IV- Persister les données<a class="headerlink" href="#iv-persister-les-donnees" title="Permanent link">&para;</a></h2>
+<p>Afin de tester la persistence des données, supprimer tout le stack avec la commande <code>docker compose -p mysite down</code> et relancer avec <code>docker compose -p mysite up -d</code>. Voyez si le site est toujours disponible et que vous n'êtes pas à une installation de wordpress.</p>
+<p>A présent que nous savons automatiser la gestion du cycle de vie de nos services, nous personnaliser notre image <code>wordpress</code> afin d'inclure un fichier particulier <code>phpinfo.php</code> qui nous permettra d'observer les configurations du serveur web.</p>
+<blockquote>
+<p>4) Créer son propre image et l'envoyer sur le hub</p>
+</blockquote>
+<h2 id="v-construire-une-image">V- Construire une image<a class="headerlink" href="#v-construire-une-image" title="Permanent link">&para;</a></h2>
+<h3 id="dockerignore">.dockerignore<a class="headerlink" href="#dockerignore" title="Permanent link">&para;</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<p><code>.dockerignore</code> est un fichier particulier de docker. Devinez à quoi il sert et quelle est son utilité ? Astuce (<a href="https://shisho.dev/blog/posts/how-to-use-dockerignore/" target="_blank">Importance de .dockerignore</a>)</p>
+</div>
+<h3 id="dockerfile">Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h3>
+<p>Les instructions dans le fichier particulier <code>Dockerfile</code> permettre de construire son propre image en ajoutant quelques <code>couches</code> à l'image de <code>wordpress:6.4.3-php8.1-apache</code>.</p>
+<p>Voici le contenu du <code>Dockerfile</code>. Il doit se trouver au même niveau que le <code>docker-compose.yml</code></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span>
+<span class="normal"><a href="#__codelineno-16-4">4</a></span>
+<span class="normal"><a href="#__codelineno-16-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="c1"># Utilisation d&#39;une image PHP officielle</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="hll">FROM<span class="w"> </span>wordpress:6.4.3-php8.1-apache
+</span><a id="__codelineno-16-3" name="__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="c1"># Installer Vim</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a>RUN<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>vim<span class="w"> </span>ascii
+</code></pre></div></td></tr></table></div>
+<p>Créer un dossier <code>www</code> à la racine du projet. Nous allons synchronisé ce dossier avec le dossier <code>/var/www/html</code> présent dans le conteneur.</p>
+<p>Aménagement du <code>docker-compose</code> pour prendre en compte le <code>Dockerfile</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-17-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-17-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-17-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-17-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-17-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-17-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-17-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-17-10">10</a></span>
+<span class="normal"><a href="#__codelineno-17-11">11</a></span>
+<span class="normal"><a href="#__codelineno-17-12">12</a></span>
+<span class="normal"><a href="#__codelineno-17-13">13</a></span>
+<span class="normal"><a href="#__codelineno-17-14">14</a></span>
+<span class="normal"><a href="#__codelineno-17-15">15</a></span>
+<span class="normal"><a href="#__codelineno-17-16">16</a></span>
+<span class="normal"><a href="#__codelineno-17-17">17</a></span>
+<span class="normal"><a href="#__codelineno-17-18">18</a></span>
+<span class="normal"><a href="#__codelineno-17-19">19</a></span>
+<span class="normal"><a href="#__codelineno-17-20">20</a></span>
+<span class="normal"><a href="#__codelineno-17-21">21</a></span>
+<span class="normal"><a href="#__codelineno-17-22">22</a></span>
+<span class="normal"><a href="#__codelineno-17-23">23</a></span>
+<span class="normal"><a href="#__codelineno-17-24">24</a></span>
+<span class="normal"><a href="#__codelineno-17-25">25</a></span>
+<span class="normal"><a href="#__codelineno-17-26">26</a></span>
+<span class="normal"><a href="#__codelineno-17-27">27</a></span>
+<span class="normal"><a href="#__codelineno-17-28">28</a></span>
+<span class="normal"><a href="#__codelineno-17-29">29</a></span>
+<span class="normal"><a href="#__codelineno-17-30">30</a></span>
+<span class="normal"><a href="#__codelineno-17-31">31</a></span>
+<span class="normal"><a href="#__codelineno-17-32">32</a></span>
+<span class="normal"><a href="#__codelineno-17-33">33</a></span>
+<span class="normal"><a href="#__codelineno-17-34">34</a></span>
+<span class="normal"><a href="#__codelineno-17-35">35</a></span>
+<span class="normal"><a href="#__codelineno-17-36">36</a></span>
+<span class="normal"><a href="#__codelineno-17-37">37</a></span>
+<span class="normal"><a href="#__codelineno-17-38">38</a></span>
+<span class="normal"><a href="#__codelineno-17-39">39</a></span>
+<span class="normal"><a href="#__codelineno-17-40">40</a></span>
+<span class="normal"><a href="#__codelineno-17-41">41</a></span>
+<span class="normal"><a href="#__codelineno-17-42">42</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>version: &#39;3.3&#39;
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a>services:
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a>  wordpress:
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a>    container_name: apache-wp
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a>    build:
+<a id="__codelineno-17-8" name="__codelineno-17-8"></a>      context: .
+<a id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="hll">      dockerfile: Dockerfile
+</span><a id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="hll">    image: wp_phpinfo:1.0.0
+</span><a id="__codelineno-17-11" name="__codelineno-17-11"></a>    restart: always
+<a id="__codelineno-17-12" name="__codelineno-17-12"></a>    ports:
+<a id="__codelineno-17-13" name="__codelineno-17-13"></a>      - 8080:80
+<a id="__codelineno-17-14" name="__codelineno-17-14"></a>    environment:
+<a id="__codelineno-17-15" name="__codelineno-17-15"></a>      WORDPRESS_DB_HOST: db
+<a id="__codelineno-17-16" name="__codelineno-17-16"></a>      WORDPRESS_DB_USER: root
+<a id="__codelineno-17-17" name="__codelineno-17-17"></a>      WORDPRESS_DB_PASSWORD: admin
+<a id="__codelineno-17-18" name="__codelineno-17-18"></a>      WORDPRESS_DB_NAME: mysite
+<a id="__codelineno-17-19" name="__codelineno-17-19"></a>    volumes:
+<a id="__codelineno-17-20" name="__codelineno-17-20"></a><span class="hll">      - ./www:/var/www/html
+</span><a id="__codelineno-17-21" name="__codelineno-17-21"></a>    depends_on:
+<a id="__codelineno-17-22" name="__codelineno-17-22"></a>      - db
+<a id="__codelineno-17-23" name="__codelineno-17-23"></a>    networks:
+<a id="__codelineno-17-24" name="__codelineno-17-24"></a>      - ntw
+<a id="__codelineno-17-25" name="__codelineno-17-25"></a>
+<a id="__codelineno-17-26" name="__codelineno-17-26"></a>  db:
+<a id="__codelineno-17-27" name="__codelineno-17-27"></a>    container_name: mysql-db
+<a id="__codelineno-17-28" name="__codelineno-17-28"></a>    image: mysql:8.3.0
+<a id="__codelineno-17-29" name="__codelineno-17-29"></a>    restart: always
+<a id="__codelineno-17-30" name="__codelineno-17-30"></a>    environment:
+<a id="__codelineno-17-31" name="__codelineno-17-31"></a>      MYSQL_ROOT_PASSWORD: admin
+<a id="__codelineno-17-32" name="__codelineno-17-32"></a>    volumes:
+<a id="__codelineno-17-33" name="__codelineno-17-33"></a>      - db_data:/var/lib/mysql
+<a id="__codelineno-17-34" name="__codelineno-17-34"></a>    networks:
+<a id="__codelineno-17-35" name="__codelineno-17-35"></a>      - ntw
+<a id="__codelineno-17-36" name="__codelineno-17-36"></a>
+<a id="__codelineno-17-37" name="__codelineno-17-37"></a>networks:
+<a id="__codelineno-17-38" name="__codelineno-17-38"></a>  ntw:
+<a id="__codelineno-17-39" name="__codelineno-17-39"></a>
+<a id="__codelineno-17-40" name="__codelineno-17-40"></a>volumes:
+<a id="__codelineno-17-41" name="__codelineno-17-41"></a>  wp_data:
+<a id="__codelineno-17-42" name="__codelineno-17-42"></a>  db_data:
+</code></pre></div></td></tr></table></div>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>La ligne <code>9</code> n'est pas nécessaire. Pourquoi ?</li>
+</ol>
+</div>
+<p>Vous pouvez construire votre image Docker en exécutant la commande suivante dans le répertoire :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Attention au `.` qui fait partie de la commande à exécuter</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>docker<span class="w"> </span>build<span class="w"> </span>-p<span class="w"> </span>mysite<span class="w"> </span>-t<span class="w"> </span>wp_phpinfo:1.0.0<span class="w"> </span>.
+</code></pre></div>
+<p><img alt="Docker container build 1" src="../../../img/docker/docker_build1.png" /></p>
+<p><img alt="Docker container build 2" src="../../../img/docker/docker_build2.png" /></p>
+<p>Ensuite supprimer et redémarer les services</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>-p<span class="w"> </span>mysite<span class="w"> </span>down
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>-p<span class="w"> </span>mysite<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div></td></tr></table></div>
+<p><img alt="Docker custom image" src="../../../img/docker/docker_custom_image.png" /></p>
+<p>Accédez aux informations du serveur web avec <a href="http://localhost:8080/phpinfo.php" target="_blank"><code>http://localhost:8080/phpinfo.php</code></a></p>
+<p><a href="https://docs.docker.com/engine/reference/builder/" target="_blank">Aller plus loin avec Dockerfile</a></p>
+<h2 id="vi-publier-une-image-sur-le-hub">VI- Publier une image sur le hub<a class="headerlink" href="#vi-publier-une-image-sur-le-hub" title="Permanent link">&para;</a></h2>
+<h2 id="vii-nettoyer-les-ressources-orphelines">VII- Nettoyer les ressources orphelines<a class="headerlink" href="#vii-nettoyer-les-ressources-orphelines" title="Permanent link">&para;</a></h2>
+<p>Docker par son activité peut rapidement télécharger beaucoup de volumes de données et certains conteneurs, images, réseaux, volumes peuvent restés orphelins. Il est utile dans certaines conditions de libérer les ressources non utilisées.</p>
+<p>Il y a plusieurs commandes de maintenance, mais la plus complète est la suivante. Elle est à utiliser avec parcimonie</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>docker<span class="w"> </span>system<span class="w"> </span>prune
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Allez plus loin</p>
+<p>Déployez une application springboot avec docker? Astuce (<a href="https://docs.docker.com/samples/" target="_blank">Examples</a> - <a href="https://docs.docker.com/language/java/">Spring Boot application with Maven</a>)</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 <a href="#"  rel="noopener">Université de Namur, Belgique</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dd8806f2.min.js"></script>
+      
+    
+  </body>
+</html>

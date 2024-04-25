@@ -1,0 +1,3927 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://VincentEnglebert.github.io/web/ialtem/threads/">
+      
+      
+        <link rel="prev" href="../couplage/">
+      
+      
+        <link rel="next" href="../styles/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.19">
+    
+    
+      
+        <title>Threads - TP et Ressources web utiles</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#programmation-concurrente-mieux-utiliser-le-processeur" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="TP et Ressources web utiles" class="md-header__button md-logo" aria-label="TP et Ressources web utiles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TP et Ressources web utiles
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Threads
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../infob318/" class="md-tabs__link">
+          
+  
+    
+  
+  INFOB318
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../poo/" class="md-tabs__link">
+          
+  
+    
+  
+  IALTEM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labil/" class="md-tabs__link">
+          
+  
+    
+  
+  LABIL
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../mde/" class="md-tabs__link">
+          
+  
+    
+  
+  MDE
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../bagi/" class="md-tabs__link">
+        
+  
+    
+  
+  BAGI
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../frameworks/" class="md-tabs__link">
+          
+  
+    
+  
+  Frameworks et technologies
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="TP et Ressources web utiles" class="md-nav__button md-logo" aria-label="TP et Ressources web utiles" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    TP et Ressources web utiles
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../infob318/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    INFOB318
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            INFOB318
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    IALTEM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            IALTEM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../poo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    POO avancée
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SOLID principles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../couplage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Couplage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Threads
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Threads
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contexte" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contexte
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contexte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environnement-monoprocesseur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environnement monoprocesseur
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Environnement monoprocesseur">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#et-si-on-faisait-un-peu-dhistoire" class="md-nav__link">
+    <span class="md-ellipsis">
+      Et si on faisait un peu d'histoire 😎
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synthese" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synthèse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environnement-multiprocesseur-multi-coeur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environnement multiprocesseur (multi-coeur)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environnement-monothreade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environnement monothreadé
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environnement-multithreade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environnement multithreadé
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processus-et-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processus et Threads
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      Le Scheduler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-types-dordonnancement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les types d'ordonnancement
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Les types d'ordonnancement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordonnancement-collaboratif" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordonnancement collaboratif
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordonnancement-preemptif" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordonnancement préemptif
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-context-switches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Le context switches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resume" class="md-nav__link">
+    <span class="md-ellipsis">
+      Résumé
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ressource-et-zone-critique" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ressource et zone critique
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ressource et zone critique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ressource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ressource
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-critique" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section critique
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attentes-passive-et-active" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attentes passive et active
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mecanisme-classique-de-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mécanisme classique de synchronization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mécanisme classique de synchronization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Volatile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronized" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronized
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-de-la-classe-singleton" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple de la classe singleton
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategies-avancees-de-synchronisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stratégies avancées de synchronisation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stratégies avancées de synchronisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mutex" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutex
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mutex">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple en Java
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pseudo-implementation-ideale-dun-mutex" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pseudo implémentation idéale d'un mutex
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semaphore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sémaphore
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutex-moniteur-semaphore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutex - Moniteur - Semaphore
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problemes-liveness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problèmes (Liveness)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problèmes (Liveness)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deadlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deadlock ❌
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#race-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Race condition ❌
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starvation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starvation ❌
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dormancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dormancy ❌
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aller-plus-loin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aller plus loin ❌
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aller plus loin ❌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-java-de-gestion-de-la-concurrence" class="md-nav__link">
+    <span class="md-ellipsis">
+      API java de gestion de la concurrence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programmation-asynchrone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programmation asynchrone
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liens-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Liens utiles
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../styles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architectural patterns and styles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scenario/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Non Fonctional Properties
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            TP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../fiches/thread/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Threads
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8_1" id="__nav_3_8_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            Threads
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/thread/qcm_exercices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QCM et exercices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/thread/philosophes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Philosophes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/thread/lecteurs_redacteurs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lecteurs/Rédacteurs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/thread/producteurs_consommateurs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Producteurs/Consommateurs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/thread/tower_bridge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tower bridge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/thread/workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/thread/petri/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Petri Net
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../labil/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    LABIL
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            LABIL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../mde/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    MDE
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            MDE
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bagi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BAGI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../frameworks/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Frameworks et technologies
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Frameworks et technologies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../frameworks/aop/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    AOP & AspectJ
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            AOP & AspectJ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../fiches/aop/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    TP
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_2_2" id="__nav_7_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            TP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/aop/tp_transaction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des transactions 😎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../frameworks/docker/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Docker
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Docker
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../fiches/docker/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    TP
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_3_2" id="__nav_7_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            TP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/docker/commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prise en main de docker 😎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/javascript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frameworks Javascript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frameworks python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../frameworks/git/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../fiches/git/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    TPs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_6_2" id="__nav_7_6_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            TPs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/git/commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prise en main de git 😎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/git/git_actions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Actions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/git/cicd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/git/bugs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chasse aux bugs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/git/hooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Hooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../frameworks/groovy/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Groovy
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7">
+            <span class="md-nav__icon md-icon"></span>
+            Groovy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    IDE
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_8">
+            <span class="md-nav__icon md-icon"></span>
+            IDE
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/ide/intellij/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intellij IDEA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/ide/eclipse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eclipse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/javafx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JavaFX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/osgi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSGi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/scrum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCRUM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_12" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../frameworks/spring/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Spring
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_12" id="__nav_7_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_12">
+            <span class="md-nav__icon md-icon"></span>
+            Spring
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/spring/concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concepts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/spring/spring_boot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring boot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/spring/structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Structure d'un projet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/spring/dev_tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dev Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/spring/db_confs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration des DB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/spring/persistence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Couche de persistence
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/spring/spring_aop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring AOP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/spring/securite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Securité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/spring/audit_logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audit and Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/spring/junit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Junit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/spring/jms_activemq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JMS ActiveMQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frameworks/spring/serveurs_tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Servers and build tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_12_14" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../fiches/spring/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    TPs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_12_14" id="__nav_7_12_14_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_12_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_12_14">
+            <span class="md-nav__icon md-icon"></span>
+            TPs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/spring/injection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Injection de dépendance 😎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/spring/spring_config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/spring/rest_bootstrap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    REST Bootstrap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiches/spring/frontend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frontend framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contexte" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contexte
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contexte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environnement-monoprocesseur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environnement monoprocesseur
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Environnement monoprocesseur">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#et-si-on-faisait-un-peu-dhistoire" class="md-nav__link">
+    <span class="md-ellipsis">
+      Et si on faisait un peu d'histoire 😎
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synthese" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synthèse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environnement-multiprocesseur-multi-coeur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environnement multiprocesseur (multi-coeur)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environnement-monothreade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environnement monothreadé
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environnement-multithreade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environnement multithreadé
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processus-et-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processus et Threads
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      Le Scheduler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-types-dordonnancement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les types d'ordonnancement
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Les types d'ordonnancement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordonnancement-collaboratif" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordonnancement collaboratif
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordonnancement-preemptif" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ordonnancement préemptif
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-context-switches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Le context switches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resume" class="md-nav__link">
+    <span class="md-ellipsis">
+      Résumé
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ressource-et-zone-critique" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ressource et zone critique
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ressource et zone critique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ressource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ressource
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-critique" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section critique
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attentes-passive-et-active" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attentes passive et active
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mecanisme-classique-de-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mécanisme classique de synchronization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mécanisme classique de synchronization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Volatile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronized" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronized
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-de-la-classe-singleton" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple de la classe singleton
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategies-avancees-de-synchronisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stratégies avancées de synchronisation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stratégies avancées de synchronisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mutex" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutex
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mutex">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple en Java
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pseudo-implementation-ideale-dun-mutex" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pseudo implémentation idéale d'un mutex
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semaphore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sémaphore
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutex-moniteur-semaphore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutex - Moniteur - Semaphore
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problemes-liveness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problèmes (Liveness)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problèmes (Liveness)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deadlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deadlock ❌
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#race-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Race condition ❌
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starvation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starvation ❌
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dormancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dormancy ❌
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aller-plus-loin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aller plus loin ❌
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aller plus loin ❌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-java-de-gestion-de-la-concurrence" class="md-nav__link">
+    <span class="md-ellipsis">
+      API java de gestion de la concurrence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programmation-asynchrone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programmation asynchrone
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liens-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Liens utiles
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="programmation-concurrente-mieux-utiliser-le-processeur">Programmation concurrente: Mieux utiliser le processeur 😉<a class="headerlink" href="#programmation-concurrente-mieux-utiliser-le-processeur" title="Permanent link">&para;</a></h1>
+<h2 id="contexte">Contexte<a class="headerlink" href="#contexte" title="Permanent link">&para;</a></h2>
+<h3 id="environnement-monoprocesseur">Environnement monoprocesseur<a class="headerlink" href="#environnement-monoprocesseur" title="Permanent link">&para;</a></h3>
+<p><strong>Monoprocesseur = 1 coeur physique</strong></p>
+<p><strong>Un processus = un programme en cours d'exécution</strong></p>
+<ul>
+<li>
+<p>Chaque processus s'exécute de manière isolée (pas de partage de contexte ou de mémoire entre les processus). Autres mécanismes de communications comme les signaux, les tuyaux, les zones partagées ...</p>
+</li>
+<li>
+<p>Le processeur exécute un processus à la fois.</p>
+</li>
+</ul>
+<p>Les environnements monoprocesseur datent des premiers ordinateurs.</p>
+<ul>
+<li>
+<p>En attribuant des priorités différentes <em>(haute et basse)</em> aux processus qui partagent un même processeur, le système d'exploitation donne l'impression que ces processus s'exécutent en parallèle, même si ce n'est pas le cas.</p>
+</li>
+<li>
+<p>1 processeur physique peut avoir des <span class="span-hightlight">processeurs logiques</span> ou coeurs logiques. Ils lui permettant de faire du traitement parallèle qui dans une certaine mesure est limité.</p>
+</li>
+</ul>
+<p>Le besoin de calcul intense et la limite matériel du  <strong>silicium (Si)</strong> ont mené à l'option des multiprocesseurs pour accroître la puissance d'une machine.</p>
+<h4 id="et-si-on-faisait-un-peu-dhistoire">Et si on faisait un peu d'histoire 😎<a class="headerlink" href="#et-si-on-faisait-un-peu-dhistoire" title="Permanent link">&para;</a></h4>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>.... Un autre facteur important qui influe directement sur la puissance de calcul des microprocesseurs est la vitesse de calcul. Les premiers microprocesseurs fonctionnaient avec une fréquence de travail de l’ordre de quelques centaines de milliers de cycles par seconde. La vitesse de calcul des instructions est un multiple du nombre de cycles par seconde. Aujourd’hui, la fréquence de travail des microprocesseurs est de l’ordre des 4 GHz (4 milliards de cycles par seconde). Dépasser cette fréquence semble difficile, l’augmentation de la fréquence des microprocesseurs stagne depuis plus années. La raison est simple, elle est à chercher du côté de la matière première utilisée pour fabriquer les composants : le silicium. Le silicium est un semi-conducteur facile à se procurer, il est le troisième élément le plus abondant sur terre. Les caractéristiques du silicium font qu’il est difficile de franchir les fréquences, contrairement à d’autres semi-conducteurs tels que l’arséniure de Gallium. Cependant, ils sont plus difficiles à concevoir et l’approvisionnement en matière première est plus compliqué que le silicium. C’est pour cette raison que l’industrie continue à utiliser le silicium comme semi-conducteur de base avec les inconvénients inhérents à cet élément chimique. De plus, dans le cas du silicium, les pertes énergétiques commencent à ne plus être linéaires lorsque la fréquence de travail dépasse 1 GHz. Par conséquent, l’accroissement de la fréquence engendre des pertes énergétiques liées plus au silicium qu’au traitement de l’information.</p>
+<p><img align="left" alt="Silicium" src="../../img/silicium.jpg" width="30%" />
+Pour rappel, un microprocesseur ne consomme de l’énergie que lorsqu’il traite de l’information, cette consommation étant provoquée par les changements d’état des transistors dans le microprocesseur. Un microprocesseur qui ne traite pas d’information ne consomme pas (ou très peu). Un autre facteur qui a permis l’augmentation de la puissance de calcul est la diminution de la tension électrique de travail. Pour limiter les temps de commutation des transistors d’un état vers son opposé, les microprocesseurs ne reconnaissent que deux états (d’où la logique binaire). La tension est passée de 5 V à environ 1 V. Descendre en dessous du volt est difficile, les caractéristiques des transistors rendent difficile d’avoir des états bien définis nécessaires à la logique binaire.
+<br>
+Au final, la conclusion est simple. Les limites en termes de densité, de fréquence de travail et de tension d’alimentation sont proches d’être atteintes.
+<br>
+L'industrie a trouvé une parade simple à ces problèmes, tout du moins à court terme. L’idée est de multiplier les unités de traitement. L’intérêt immédiat est de résoudre le problème de la limite en fréquence. Schématiquement, du point de vue de la consommation en énergie, il est préférable d’avoir 2 processeurs fonctionnant à 2 GHz plutôt qu’un seul fonctionnant à 4 GHz. La puissance de calcul effective est la même, mais la consommation en énergie inférieure pour la première configuration. C’est pour cette raison qu’à partir des années 2000, les microprocesseurs ont vu leur nombre de cœurs (ou unité de traitement) augmenter. Aujourd’hui, le nombre de cœurs avoisine 20 cœurs par processeur, il y en aura plus dans quelques années. Augmenter le nombre de cœurs dans un processeur a aussi une limite, qui est la bande passante entre la mémoire et le processeur. Tous les cœurs d’un microprocesseur partagent un même bus pour transférer les informations entre la mémoire et le microprocesseur.</p>
+<p><img alt="Les différents caches d'un microprocesseur" src="../../img/threads_microprocesseurs.png" width="60%" /></p>
+<p><em>(Source: Programmation concurrente (Maîtrisez le traitement de vos données en Java) - Laurent Joyeux - Collection Epsilon, 2017)</em></p>
+<p><br>
+Si tous les cœurs fonctionnent avec la même charge de travail, la bande passante par cœur est la bande passante totale divisée par le nombre de cœurs. Plus le nombre de cœurs est important, et plus les cœurs auront tendance à attendre les données. Pour contourner le problème, les microprocesseurs se voient dotés d’une mémoire cache unifiée aux différents cœurs. La mémoire cache s’intercale entre le microprocesseur et la mémoire principale. La mémoire cache réduit les échanges avec la mémoire principale en maintenant une petite partie des données de la mémoire principale dans le cache. Une synchronisation des données est faite entre le cache et la mémoire principale pour garder la cohérence des données. La mémoire cache a aussi le bon goût d’être beaucoup plus rapide que la mémoire principale. La mémoire cache limite les échanges entre le microprocesseur et la mémoire principale, dans le cas idéal, les échanges se feront principalement entre le cache et le microprocesseur.
+<br>
+Pour augmenter la bande passante entre le microprocesseur et la mémoire principale, une parade consiste à multiplier le nombre de bus entre le microprocesseur et la mémoire, c’est le cas pour les microprocesseurs récents.
+<br>
+L’avènement des <a href="https://fr.wikipedia.org/wiki/Microprocesseur_multi-c%C5%93ur" target="_blank">microprocesseurs multicœurs</a> ne fait que résoudre partiellement le problème lié aux limites actuelles. Reste que l’exploitation d’une puissance de calcul répartie entre différents cœurs suppose d’écrire des logiciels pouvant tirer parti de ces microprocesseurs. C’est un des objets de la programmation concurrente. Être capable d’écrire un logiciel dans un environnement multiprocesseur. Les multiprocesseurs permettent d’avoir des environnements où différents programmes sont exécutés simultanément. Dans un environnement monocœur, les programmes seront, au mieux, exécutés l’un après l’autre de manière exclusive. Ce qui impose plus de rigueur d’écriture dans un environnement multicœur...</p>
+</div>
+<h4 id="synthese">Synthèse<a class="headerlink" href="#synthese" title="Permanent link">&para;</a></h4>
+<p>Le besoin d'accroître la performance du processeur et la limite matérielle dûe au silicium, ont conduit à l'augmentation des unités de traitement d'un microprocesseur.</p>
+<p><strong>Conséquences:</strong></p>
+<ul>
+<li>Cache interne aux unités de traitements</li>
+<li>Mise à jour périodique du cache des coeurs avec la mémoire centrale. <strong>Cette mise à jour est effectuée par l'OS et échappe au programmeur.</strong></li>
+<li>Partage du même bus pour transférer les informations entre la mémoire et le microprocesseur, induisant des temps de latence.</li>
+</ul>
+<p>La plus grande implication est le besoin au niveau applicatif de forcer la synchronisation avec la mémoire centrale pour garder tous les threads informés de l'état des variables partagées.</p>
+<p><img alt="Les différents caches d'un microprocesseur" src="../../img/threads_volatile.png" /></p>
+<p><strong>En java, cela passe par l'utilisation du mot clé <a href="#volatile">volatile</a></strong></p>
+<h3 id="environnement-multiprocesseur-multi-coeur">Environnement multiprocesseur (multi-coeur)<a class="headerlink" href="#environnement-multiprocesseur-multi-coeur" title="Permanent link">&para;</a></h3>
+<p>Le premier système multiprocesseur commercial, le CDC 6600, a été introduit en 1964</p>
+<ul>
+<li>Plusieurs processeurs physiques. </li>
+<li>Plusieurs processus peuvent s'exécuter simultanément, chacun sur un processeur différent (Vrai parallélisme)</li>
+</ul>
+<p>==&gt; les serveurs, les supercalculateurs et les applications qui nécessitent des performances élevées</p>
+<h3 id="environnement-monothreade">Environnement monothreadé<a class="headerlink" href="#environnement-monothreade" title="Permanent link">&para;</a></h3>
+<p><strong>Un processus principal = 1 thread</strong></p>
+<p>Si une application monothreadée tourne dans un environnement multiprocesseur, le système ne sera pas exploité à son plein potentiel. Comment régler ce problème...  <em>c'est possible avec les applications multithreadés</em>.</p>
+<h3 id="environnement-multithreade">Environnement multithreadé<a class="headerlink" href="#environnement-multithreade" title="Permanent link">&para;</a></h3>
+<p><strong>Un processus principal et plusieurs fourches</strong></p>
+<p><strong><a href="https://en.wikipedia.org/wiki/Thread_(computing)" target="_blank">Thread</a> = fil d'exécution de code, à l'intérieur d'un processus, et qui a la possibilité d'être ordonnancé.</strong></p>
+<ul>
+<li>
+<p>Un programme multithreadé profite des capacités multicoeurs du microprocesseur et du parallélisme des tâches.</p>
+</li>
+<li>
+<p>chacun thread dispose d'une pile et d'un pointeur de programme</p>
+</li>
+</ul>
+<p><strong>Attention:</strong> Remarquez qu'une application multithreadée peut bien tourner dans un environnement monoprocesseur (<em>avec la présence de coeur logique</em>).</p>
+<h3 id="processus-et-threads">Processus et Threads<a class="headerlink" href="#processus-et-threads" title="Permanent link">&para;</a></h3>
+<p>Ce qu'il faut retenir: </p>
+<ul>
+<li>
+<p>Tout processus a un thread principal,
+depuis lequel d’autres threads peuvent être lancés, dans le cas d'une application multi-thread.</p>
+</li>
+<li>
+<p>les threads partagent le même espace d'adressage que le processus qui les a lancés. Cela permet aux threads d'accéder aux mêmes données et aux mêmes ressources.</p>
+</li>
+</ul>
+<p>Maintenant que nous savions ce que c'est qu'un thread et un processus sans entrer dans les détails de leurs <a href="https://fr.wikipedia.org/wiki/Processus_(informatique)" target="_blank">cycles de vie</a>, laissez moi vous présenter le Big Boss 😎 au niveau du système d'exploitation qui gère tous processus et leurs fils (threads). Le système d'exploitation peut utiliser différentes stratégies d'allocation des threads aux cœurs pour optimiser l'utilisation des ressources matérielles grâce au scheduler et nous verrons que cela peut poser quelques problèmes lors de l'exécution des programmes multithreadés.</p>
+<h3 id="le-scheduler">Le Scheduler<a class="headerlink" href="#le-scheduler" title="Permanent link">&para;</a></h3>
+<p>C'est le chef d'orchestre, un composant logiciel du système d'exploitation. C'est lui qui décide quel processus (ou thread) a accès à quelle ressources, quand, comment, pendant combien de temps. Il fait aussi pas mal d'autres choses...</p>
+<p><strong>Ce qui nous intéresse :</strong></p>
+<ul>
+<li>le scheduler maintient une liste de processus et de threads à faire tourner;</li>
+<li>il décide - à une fréquence assez élevée - de leur donner la main à tour de rôle;</li>
+<li>simplement il faut bien réaliser qu'à ce stade, ce que manipule le scheduler, c'est essentiellement du code binaire, très proche du processeur, après toutes les phases de compilation et optimisation.</li>
+</ul>
+<p>Pour y arriver il doit adopter une stratégie. C'est ce que nous appellons l'ordonnancement. Les deux grandes familles d'ordonnancement sont présentées ci-dessous.</p>
+<h3 id="les-types-dordonnancement">Les types d'ordonnancement<a class="headerlink" href="#les-types-dordonnancement" title="Permanent link">&para;</a></h3>
+<h4 id="ordonnancement-collaboratif">Ordonnancement collaboratif<a class="headerlink" href="#ordonnancement-collaboratif" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>les tâches ne sont pas interruptibles: elles rendent la main lorsqu'elles ont fini ou lors de certains appels systèmes particuliers.</p>
+</li>
+<li>
+<p>Les tâches critiques sont protégées.</p>
+</li>
+</ul>
+<p>==&gt; MsDos et Windows 3.1 utilisaient un ordonnancement collaboratif</p>
+<p>==&gt; Windows 95, 98 utilisaient un mode collaboratif pour certaines tâches.</p>
+<p>🤓 Que se passe t'il lorsqu'une tâche entre dans une boucle infinie ou dure trop longtemps dans ce type d'ordonnancement ?</p>
+<p>😲 je vous laisse deviner.</p>
+<h4 id="ordonnancement-preemptif">Ordonnancement préemptif<a class="headerlink" href="#ordonnancement-preemptif" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Le système peut interrompre une tâche à tout moment <em>pour switcher à un autre thread</em></p>
+</li>
+<li>
+<p>Le système n'est pas bloqué par certaines tâches trop longues</p>
+</li>
+<li>
+<p>Mais cela pose problème pour les tâches critiques qui ne doivent pas être interrompues.</p>
+</li>
+</ul>
+<p>==&gt; Windows NT, XP et suivants, Unix, Linux, MacOs utilisent un ordonnancement préemptif</p>
+<p>Vous auriez deviner, nos systèmes d'exploitations modernes utisent l'ordonnonancement préemptif. Cependant l'ordonnancement collaboratif est d'actualité dans certains contexte.</p>
+<p>🤔 Et comment le scheduler opère le basculement entre tâches.</p>
+<h3 id="le-context-switches">Le context switches<a class="headerlink" href="#le-context-switches" title="Permanent link">&para;</a></h3>
+<p><em>(Cette section est extrait du FUN Mooc: Les fondamentaux aux concepts avancés du language - Semaine 8)</em></p>
+<p>Très bonne question.</p>
+<p>L'instant où le scheduler décide de suspendre l'exécution d'un processus - ou thread - pour donner la main à un autre, s'appelle un <em>context switch</em>; on parle de <em>process switch</em> lorsqu'on passe d'un processus à un autre, et de task switch ou <em>thread switch</em> lorsqu'on passe d'un thread à un autre à l'intérieur d'un processus.</p>
+<p>Le point important pour nous, c'est que le scheduler est un morceau de code générique, il fait donc son travail de manière neutre pour tous les processus ou threads, indépendamment du langage par exemple, ou du domaine d'application; et que le découpage du temps en slots alloués aux différents joueurs se fait bien évidemment sur la base des instuctions élémentaires du processeur - ce qu'on appelle les <em>cycles</em>.</p>
+<p>🥱 Tu veux en venir où avec toutes ces informations ?</p>
+<p><strong>Phénomène général</strong></p>
+<p>Le problème principal ici est lié à l'absence de contrôle, par le programmeur, sur les context switchings; et du coup ceux-ci peuvent intervenir à n'importe quel moment. Cela crée parfois de mauvaises surprises.</p>
+<p>De manière générale :</p>
+<ul>
+<li>
+<p>dans un langage de programmation un tout petit peu évolué, un fragment de code (même réduit à une instruction <em>i++; --i; ...</em>) se traduit presque toujours en plusieurs instructions binaires pour le processeur</p>
+</li>
+<li>
+<p>pour que le programme fonctionne correctement dans un mode multi-thread, certains fragments de code (<em>permutation, virement bancaire ...</em>), et notamment ceux qui accèdent à de la mémoire partagée, doivent être exécutés de façon atomique (c-à-d ne pas être interrompus en plein milieu par le scheduler)</p>
+</li>
+<li>
+<p>et sans aide du programmeur, le scheduler n'a aucun moyen de savoir où, dans le flot d'instruction binaires, il est légitime ou pas de faire un context switching.</p>
+</li>
+</ul>
+<p><strong>Solutions</strong></p>
+<p>Pour rendre la programmation par thread utilisable en pratique, il faut lui adjoindre des mécanismes, accessibles au programmeur, pour rendre explicite ce type de problème.</p>
+<p>La notion la plus simple de ces mécanismes est celle de <em>verrou</em> pour implémenter une <em>exclusion mutuelle</em>.</p>
+<p><strong>En Java, cela passe par l'utilisation du mot clé synchronized.</strong>. D'autres méchanismes existent comme les sémaphores que nous aborderons un peu plus loin.</p>
+<h3 id="resume">Résumé<a class="headerlink" href="#resume" title="Permanent link">&para;</a></h3>
+<p>Le besoin de faire de la programmation parallèle et d'exploiter les potentialités des nouvelles machines ont conduit à l'utilisation des threads. Cependant cela implique la gestion de la synchronisation des ressources et variables partagées (<em>avec des mécanismes de programmation: mots clés volatile et synchronized en java</em>) afin d'éviter les problèmes de: deadlock, race condition, starvation, dormancy ... Des pistes de résolutions de ces problèmes seront discutées un peu plus loin.</p>
+<h2 id="ressource-et-zone-critique">Ressource et zone critique<a class="headerlink" href="#ressource-et-zone-critique" title="Permanent link">&para;</a></h2>
+<h3 id="ressource">Ressource<a class="headerlink" href="#ressource" title="Permanent link">&para;</a></h3>
+<p>Entité dont un thread ou un processus a besoin pour fonctionner</p>
+<ul>
+<li>ressource matérielle (périphériques, processeur)</li>
+<li>ressource logicielle (variables)</li>
+</ul>
+<h3 id="section-critique">Section critique<a class="headerlink" href="#section-critique" title="Permanent link">&para;</a></h3>
+<p>Partie d’un programme dont l’exécution de doit pas s’entrelacer avec d’autres programmes.</p>
+<p>Une fois qu’une tâche y entre, il faut lui permettre de terminer cette section sans permettre àd’autres
+tâches de travailler sur les mêmes données.</p>
+<h3 id="attentes-passive-et-active">Attentes passive et active<a class="headerlink" href="#attentes-passive-et-active" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Attente active</strong>: implémentée avec une <span class="span-hightlight">boucle</span>, le thread requête en boucle l'accès à la ressource jusqu'au son obtention. Cette attente est gourmande en CPU.</p>
+</li>
+<li>
+<p><strong>Attente passive</strong>: le thread libère le CPU en attendant que la ressource ne soit disponible donnant ainsi la chance à d'autre thread de tenter leur chance. Implémenter grâce au mécanisme de <span class="span-hightlight">wait()</span>;</p>
+</li>
+</ul>
+<h2 id="mecanisme-classique-de-synchronization">Mécanisme classique de synchronization<a class="headerlink" href="#mecanisme-classique-de-synchronization" title="Permanent link">&para;</a></h2>
+<h3 id="volatile">Volatile<a class="headerlink" href="#volatile" title="Permanent link">&para;</a></h3>
+<p><strong>1. Utilité de volatile</strong>: L'utilisation du mot clé volatile force l'écriture de la valeur d'une variable en mémoire ainsi que sa relecture. Si une variable n'est pas partagée entre plusieurs threads, il n'est pas nécessaire d'utiliser le mot-clé volatile.</p>
+<p><strong>2. Garantie de lisibilité</strong>: Le mot clé volatile ne réalise aucune opération pour garantir la gestion des accès concurrents : elle offre juste une garantie sur la visibilité.</p>
+<p><strong>3. Utilisation</strong>: Le mot clé volatile s'utilise sur la déclaration d'une variable. Il n'est pas possible de l'utiliser sur une méthode ou une classe. L’utilisation de volatile n’a de sens que sur les types basiques primaires <em>(boolean, byte, char, short, int, long, float et double)</em>. L'utilisation de volatile directement sur l'objet n'a pas toujours un effet aussi prévisible ou souhaitable. Cela est dû au fait que volatile garantit la visibilité des changements de la référence à l'objet, mais pas nécessairement des changements internes à l'objet lui-même. </p>
+<p><strong>5. Atomicité des instructions complexes</strong>: Volatile ne garantit pas l'atomicité des opérations complexes.</p>
+<p><strong>6. Accès concurrent lecture/écriture</strong>: En accès concurrent à une variable volatile, une demande de lecture ne sera accordée qu'une fois l'opération d'écriture en cours terminée.</p>
+<p>Pour des opérations atomiques sur des objets complexes, Java propose d'autres mécanismes tels que les verrous (synchronized) ou l'utilisation de classes du package <span class="span-hightlight">java.util.concurrent</span>. Ces mécanismes garantissent à la fois la visibilité des changements et l'atomicité des opérations complexes. </p>
+<p>Exemple d'utilisation de volatile:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Foo</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Thread</span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="hll"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">close</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">(){</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="hll"><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">close</span><span class="p">){</span>
+</span><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">            </span><span class="c1">// do work</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">(){</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="hll"><span class="w">        </span><span class="n">close</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="synchronized">Synchronized<a class="headerlink" href="#synchronized" title="Permanent link">&para;</a></h3>
+<p>Le mot clé synchronized :</p>
+<ul>
+<li>
+<p>contrôle les modifications de variables partagées au sein d'une zone critique. Cela assure qu' à chaque instant, un seul thread peut exécuter et modifier des variables dans zone critique les autres threads attendront leur tour.</p>
+</li>
+<li>
+<p>permet de demander l'acquisition d'un moniteur</p>
+</li>
+</ul>
+<p><strong>Les trois manières d'utiliser synchronized sont mis en évidence</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Bridge</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="k">new</span><span class="w"> </span><span class="n">Object</span><span class="p">()</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="c1">// méthode statique synchronisée, le paramètre de synchronisation est </span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="c1">// l&#39;objet Bridge.class</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="hll"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">getCapacity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><a id="__codelineno-1-8" name="__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">       </span><span class="c1">// corps de la méthode</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="c1">// méthode non statique synchronisée, le paramètre de synchronisation est</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="c1">// l&#39;objet this</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="hll"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">synchronized</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">enter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><a id="__codelineno-1-15" name="__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">       </span><span class="c1">// corps de la méthode</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">getout</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">       </span><span class="c1">// synchronization sur l&#39;objet key</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">       </span><span class="c1">// on peut aussi synchroniser sur l&#39;objet this</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="hll"><span class="w">       </span><span class="kd">synchronized</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><a id="__codelineno-1-24" name="__codelineno-1-24"></a>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">          </span><span class="c1">// bloc synchronisé</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">       </span><span class="p">}</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="exemple-de-la-classe-singleton">Exemple de la classe singleton<a class="headerlink" href="#exemple-de-la-classe-singleton" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Singleton</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="c1">// volatile variable</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="hll"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="n">Singleton</span><span class="w"> </span><span class="n">_instance</span><span class="w"> </span><span class="p">;</span>
+</span><a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="kd">public</span><span class="w">  </span><span class="nf">getInstance</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">_instance</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">){</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">            </span><span class="kd">synchronized</span><span class="p">(</span><span class="n">Singleton</span><span class="p">.</span><span class="na">class</span><span class="p">){</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="hll"><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">_instance</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">){</span>
+</span><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">                    </span><span class="n">_instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Singleton</span><span class="p">();</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="n">_instance</span><span class="p">;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>
+<p>Le <em>mot-clé volatile est appliqué à la référence de l'instance unique du Singleton</em>, et non directement à l'objet complexe lui-même. C'est cette référence qui doit être garantie comme visible entre les threads. </p>
+</li>
+<li>
+<p>Cette approche, appelée <span class="span-hightlight">Double-Checked Locking with Volatile</span>, vise à optimiser les performances en évitant le coût du verrouillage à chaque appel de la méthode getInstance, tout en garantissant une initialisation sûre dans un environnement multithreadé grâce à l'utilisation de volatile. </p>
+</li>
+</ul>
+<h2 id="strategies-avancees-de-synchronisation">Stratégies avancées de synchronisation<a class="headerlink" href="#strategies-avancees-de-synchronisation" title="Permanent link">&para;</a></h2>
+<p>Les mutex et les sémaphores sont des mécanismes de synchronisation utilisés dans la programmation concurrente pour assurer un accès sécurisé aux ressources partagées entre plusieurs threads.</p>
+<h3 id="mutex">Mutex<a class="headerlink" href="#mutex" title="Permanent link">&para;</a></h3>
+<p>Un mutex (mutual exclusion) signifie que l'accès à la ressource est mutuellement exclusif pour les threads.</p>
+<h4 id="exemple-en-java">Exemple en Java<a class="headerlink" href="#exemple-en-java" title="Permanent link">&para;</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ExempleMutex</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="c1">// Le verrou ou mutex</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Lock</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ReentrantLock</span><span class="p">();</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">methodeCritique</span><span class="p">(){</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="hll"><span class="w">        </span><span class="n">mutex</span><span class="p">.</span><span class="na">lock</span><span class="p">();</span><span class="w"> </span><span class="c1">// P(mutex) : entrée en section critique</span>
+</span><a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">        </span><span class="k">try</span><span class="p">{</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">            </span><span class="c1">// Section critique : accès sécurisé à la ressource partagée</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="p">{</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="hll"><span class="w">            </span><span class="n">mutex</span><span class="p">.</span><span class="na">unlock</span><span class="p">();</span><span class="w"> </span><span class="c1">// V(mutex): sortie de la section critique</span>
+</span><a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Pour le mutex, le compteur est 1.</p>
+<ul>
+<li>l'opération <strong>P</strong> (<em>proberen</em>, signifiant "essayer" en néerlandais) décrémente le compteur;</li>
+<li>l'oparation <strong>V</strong> (<em>verhogen</em>, signifiant "augmenter" en néerlandais) l'incrémente</li>
+</ul>
+<h4 id="pseudo-implementation-ideale-dun-mutex">Pseudo implémentation idéale d'un mutex<a class="headerlink" href="#pseudo-implementation-ideale-dun-mutex" title="Permanent link">&para;</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>int libre = 1;
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>fifo liste_attente;
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="hll">lock(){  // synchronized
+</span><a id="__codelineno-4-5" name="__codelineno-4-5"></a>    while(1){
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>        if(libre){
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>            libre = 0;
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>            return;
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>        }
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>        liste_attente.ajouter(thread_courant());
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="hll">        wait(); // Met en attente le thread courant
+</span><a id="__codelineno-4-12" name="__codelineno-4-12"></a>    }
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a>}
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="hll">unlock(){ // synchronized
+</span><a id="__codelineno-4-16" name="__codelineno-4-16"></a>    if(liste_attente.non_vide()){
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="hll">        signal(liste_attente.retirer())
+</span><a id="__codelineno-4-18" name="__codelineno-4-18"></a>    }else{
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a>        libre = 1;
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a>    }
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a>}
+</code></pre></div></td></tr></table></div>
+<h3 id="semaphore">Sémaphore<a class="headerlink" href="#semaphore" title="Permanent link">&para;</a></h3>
+<p>Un sémaphore est un mécanisme plus général que le mutex et peut être utilisé pour contrôler l'accès à un nombre fixe de ressources simultanément.</p>
+<p>Pour contrôler l'accès à un fichier, un sémaphore peut être utilisé pour compter le nombre de threads qui accèdent au fichier. Lorsque le nombre de threads atteint un certain seuil, le sémaphore peut être utilisé pour bloquer les nouveaux threads qui tentent d'accéder au fichier.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">File</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="c1">// Sémaphore initialisé avec un compteur de 3</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Semaphore</span><span class="w"> </span><span class="n">sem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Semaphore</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span><span class="c1">// limite à 3 jetons</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">open</span><span class="p">(){</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="hll"><span class="w">        </span><span class="n">sem</span><span class="p">.</span><span class="na">acquire</span><span class="p">();</span><span class="w"> </span><span class="c1">// P opération</span>
+</span><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">        </span><span class="k">try</span><span class="p">{</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">            </span><span class="c1">// Section critique : accès sécurisé à la ressource partagée</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="p">{</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="hll"><span class="w">            </span><span class="n">sem</span><span class="p">.</span><span class="na">release</span><span class="p">();</span><span class="w"> </span><span class="c1">// V opération</span>
+</span><a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Dans cet exemple, le sémaphore est initialisé avec une limite de 3. Trois threads peuvent acquérir le sémaphore simultanément, mais les suivants doivent attendre qu'au moins un thread libère le sémaphore en exécutant l'opération release.</p>
+<h3 id="mutex-moniteur-semaphore">Mutex - Moniteur - Semaphore<a class="headerlink" href="#mutex-moniteur-semaphore" title="Permanent link">&para;</a></h3>
+<p>📄 <a href="https://codegym.cc/fr/groups/posts/fr.220.difference-entre-un-mutex-un-moniteur-et-un-semaphore" target="_blank">Différence entre Mutex - Moniteur - Semaphore</a></p>
+<h2 id="problemes-liveness">Problèmes (Liveness)<a class="headerlink" href="#problemes-liveness" title="Permanent link">&para;</a></h2>
+<h3 id="deadlock">Deadlock ❌<a class="headerlink" href="#deadlock" title="Permanent link">&para;</a></h3>
+<p>Un deadlock est une situation dans laquelle deux ou plusieurs threads sont bloqués l'un l'autre, empêchant chacun de terminer son exécution. Cela se produit lorsque chaque thread détient une ressource dont l'autre thread a besoin pour continuer à s'exécuter.</p>
+<div class="admonition tip">
+<p class="admonition-title">Préventions</p>
+<p>Voici quelques conseils pour prévenir les deadlocks :</p>
+<ul>
+<li><strong>Utilisez des mécanismes de synchronisation appropriés</strong>. Les mécanismes de synchronisation comme les mutex et les sémaphores peuvent être utilisés pour contrôler l'accès aux ressources partagées. Il est important d'utiliser le mécanisme de synchronisation approprié pour la situation.</li>
+<li><strong>Évitez les verrous circulaires</strong>. Un verrou circulaire se produit lorsqu'un thread détient un verrou sur une ressource qui est détenue par un autre thread qui détient un verrou sur la première ressource. Les verrous circulaires peuvent entraîner des deadlocks.</li>
+<li><strong>Planifiez les threads de manière efficace</strong>. Le système d'exploitation peut décider de mettre un thread en veille si d'autres threads sont plus prioritaires. Pour éviter cela, planifiez les threads de manière à ce que les threads les plus importants soient exécutés en premier.</li>
+</ul>
+</div>
+<h3 id="race-condition">Race condition ❌<a class="headerlink" href="#race-condition" title="Permanent link">&para;</a></h3>
+<p>Une race condition est une condition dans un programme multithread où le résultat de l'exécution du programme dépend de l'ordre dans lequel les threads s'exécutent. Les race conditions peuvent entraîner des erreurs, des données corrompues ou un comportement inattendu.</p>
+<p>Une race condition peut se produire lorsqu'un ou plusieurs threads accèdent à la même variable ou ressource partagée. Si les threads accèdent à la variable ou à la ressource en même temps, le résultat de l'exécution du programme peut être différent de celui qui serait obtenu si les threads s'exécutaient séquentiellement.</p>
+<p>Voici quelques exemples de race conditions :</p>
+<ul>
+<li>Deux threads qui tentent d'écrire la même valeur dans une variable partagée.</li>
+<li>Deux threads qui tentent de lire la même variable partagée sans utiliser de mécanisme de synchronisation.</li>
+<li>Deux threads qui tentent de supprimer un élément d'une liste partagée.</li>
+</ul>
+<p>Les race conditions peuvent être difficiles à diagnostiquer et à déboguer. Il est important de comprendre les causes des race conditions et les mesures à prendre pour les prévenir.</p>
+<div class="admonition tip">
+<p class="admonition-title">Préventions</p>
+<ul>
+<li>Utilisez des variables ou des ressources partagées de manière exclusive.</li>
+</ul>
+</div>
+<h3 id="starvation">Starvation ❌<a class="headerlink" href="#starvation" title="Permanent link">&para;</a></h3>
+<p>Un thread est incapable d'accéder à des ressources partagées pendant une période prolongée, ce qui empêche le thread de s'exécuter et de terminer ses tâches. Cela peut se produire lorsqu'un thread a une priorité plus faible que les autres threads ou lorsque d'autres threads utilisent constamment les ressources partagées.</p>
+<p>Voici quelques exemples de conditions qui peuvent entraîner de la starvation :</p>
+<ul>
+<li>Un thread avec une priorité faible a constamment accès à des ressources partagées.</li>
+<li>Plusieurs threads accèdent constamment à la même ressource partagée, empêchant d'autres threads d'y accéder.</li>
+<li>Un thread utilise une boucle infinie pour accéder à une ressource partagée, empêchant d'autres threads d'y accéder. (<em>Attente active</em>)</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Préventions</p>
+<ul>
+<li>Utilisez des politiques de planification qui accordent des ressources aux threads en fonction de leur priorité.</li>
+<li>Utilisez des mécanismes de synchronisation (mutex, semaphores) pour empêcher les threads d'accéder aux ressources partagées lorsqu'elles ne sont pas disponibles.</li>
+<li>Évitez d'utiliser des boucles infinies pour accéder aux ressources partagées.</li>
+</ul>
+</div>
+<h3 id="dormancy">Dormancy ❌<a class="headerlink" href="#dormancy" title="Permanent link">&para;</a></h3>
+<p>Un thread dormant est un thread qui a été placé dans un état d'attente par le système d'exploitation. Cela signifie que le thread n'exécute pas de code actuellement, mais attend toujours qu'un événement spécifique se produise avant de pouvoir reprendre l'exécution. Trop de dormance est un problème</p>
+<div class="admonition info">
+<p class="admonition-title">Les raisons de la dormance</p>
+<p>Il existe plusieurs raisons pour lesquelles un thread peut être placé dans un état dormant :</p>
+<ul>
+<li>
+<p><strong>En attente de la fin d'une opération d'E/S</strong> : Lorsqu'un thread émet une demande d'E/S, telle que la lecture d'un fichier ou d'une prise de socket réseau, le thread est généralement placé dans un état dormant jusqu'à ce que l'opération d'E/S soit terminée. C'est parce que le thread ne peut pas continuer à s'exécuter tant que les données demandées ne sont pas disponibles.</p>
+</li>
+<li>
+<p><strong>En attente d'un événement de synchronisation</strong> : Les threads peuvent également être placés dans un état dormant pour attendre un événement de synchronisation, tel qu'un sémaphore ou un mutex pour devenir disponible. Cela est utilisé pour contrôler l'accès aux ressources partagées et garantir qu'un nombre multiple de threads n'accède pas à la même ressource en même temps.</p>
+</li>
+<li>
+<p><strong>En attente de la survenue d'une condition spécifique</strong> : Les threads peuvent également être placés dans un état dormant pour attendre la survenue d'une condition spécifique. Cela est souvent utilisé pour implémenter des délais d'expiration ou d'autres formes d'exécution conditionnelle.</p>
+</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Préventions</p>
+<ul>
+<li>Définir un délai de <strong>l'attente passive</strong> en précisant en java le temps d'attente du thread au bout lequel il se réveillera sans aucun événement externe</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">wait</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Environ 3s</span>
+</code></pre></div>
+<ul>
+<li>S'assurez que le thread ne restera pas endormi un <em>wait()</em> doit être suivi d'un <em>notify()</em> ou d'un <em>notifyAll()</em></li>
+</ul>
+</div>
+<h2 id="aller-plus-loin">Aller plus loin ❌<a class="headerlink" href="#aller-plus-loin" title="Permanent link">&para;</a></h2>
+<h3 id="api-java-de-gestion-de-la-concurrence">API java de gestion de la concurrence<a class="headerlink" href="#api-java-de-gestion-de-la-concurrence" title="Permanent link">&para;</a></h3>
+<h3 id="programmation-asynchrone">Programmation asynchrone<a class="headerlink" href="#programmation-asynchrone" title="Permanent link">&para;</a></h3>
+<h2 id="liens-utiles">Liens utiles<a class="headerlink" href="#liens-utiles" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>📄 <a href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-17.html#jls-17.4.1" target="_blank">Spécification JAVA SE threads et locks</a></p>
+</li>
+<li>
+<p>📄 <a href="https://stackoverflow.com/questions/106591/what-is-the-volatile-keyword-useful-for" target="_blank">What is the volatile keyword useful for</a></p>
+</li>
+<li>
+<p>📄 Programmation concurrente (Maîtrisez le traitement de vos données en Java Java) - Laurent Joyeux - Collection Epsilon, 2017</p>
+</li>
+<li>
+<p><span class="twemoji youtube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg></span> Programmation concurrente - Multithreading et traitement d'informations en Java (ENI) de Thomas Broussard</p>
+</li>
+<li>
+<p><span class="twemoji youtube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg></span> <a href="https://www.youtube.com/watch?v=l_dnpUkkaSg" target="_blank">Problèmes de synchronisation</a></p>
+</li>
+<li>
+<p><span class="twemoji youtube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg></span> <a href="https://www.youtube.com/watch?v=B2xijT1ULHw" target="_blank">Problème des lecteurs et rédacteurs</a> </p>
+</li>
+<li>
+<p><span class="twemoji youtube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg></span> <a href="https://www.youtube.com/watch?v=Qmb3iGf9HJg" target="_blank">Problème des philosophes</a> </p>
+</li>
+<li>
+<p><span class="twemoji youtube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg></span> <a href="https://www.youtube.com/watch?v=SJDejntCGSM" target="_blank">Problème des producteurs et consommateurs</a></p>
+</li>
+<li>
+<p>📄 <a href="https://fr.wikipedia.org/wiki/Famine_(informatique)" target="_blank">Problème de famine</a></p>
+</li>
+<li>
+<p>📄 <a href="https://blog.paumard.org/cours/java-api/chap05-concurrent-synchronisation.html" target="_blank">Blog Paumard</a></p>
+</li>
+<li>
+<p>📄 <a href="https://p-fb.net/licence3/prog_concurrente/cours/handout_programmation_concurrente_2022_2023.pdf" target="_blank">Handout programmation concurrente</a></p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 <a href="#"  rel="noopener">Université de Namur, Belgique</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dd8806f2.min.js"></script>
+      
+    
+  </body>
+</html>
