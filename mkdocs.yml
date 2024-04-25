@@ -109,12 +109,17 @@ nav:
 
   - LABIL: 
     - Overview: labil/index.md
-  - MDE: mde/index.md
+  - MDE: 
+    - Overview: mde/index.md
   - BAGI: bagi/index.md
 
   - Frameworks et technologies:
     - Overview: frameworks/index.md
-    - AOP & AspectJ: frameworks/aop/index.md
+    - AOP & AspectJ:
+      - Overview: frameworks/aop/index.md
+      - TP:
+        - Prérequis: fiches/aop/index.md
+        - Gestion des transactions 😎: fiches/aop/tp_transaction.md
     - Docker: 
       - Overview: frameworks/docker/index.md
       - TP:
@@ -124,13 +129,15 @@ nav:
     - Frameworks python: frameworks/python/index.md
     - Git : 
       - Overview: frameworks/git/index.md
-      - TP:
+      - TPs:
         - Prérequis: fiches/git/index.md
         - Prise en main de git 😎: fiches/git/commands.md
         - Git Actions: fiches/git/git_actions.md
         - CI/CD: fiches/git/cicd.md
         - Chasse aux bugs: fiches/git/bugs.md
         - Git Hooks: fiches/git/hooks.md
+    - Groovy :
+      - Overview: frameworks/groovy/index.md
     - IDE:
       - Intellij IDEA: frameworks/ide/intellij.md
       - Eclipse: frameworks/ide/eclipse.md
