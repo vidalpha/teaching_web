@@ -60,7 +60,7 @@ Une implémentation du service avec l'injection de dépendance (`EtudiantReposit
 ![Une implémentation du service avec l'injection de dépendance](../../img/spring/injection_dependance.png)
 
 !!! question "Questions"
-    `EtudiantRepository` est une interface. Qu'elle implémentation est fournie ?
+    `EtudiantRepository` est une interface. Quelle implémentation est fournie ?
 
 ## Mise en place du controller
 
