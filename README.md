@@ -18,4 +18,4 @@ Documentation can be generated with mkdocs. Use the following resources to insta
 ## Then serve the docs
     > mkdocs serve
 
-NB: All ressources are also accessible online via this [link](#)
+NB: All ressources are also accessible online via this [link](https://vidalpha.github.io/teaching_web/)
